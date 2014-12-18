@@ -1,1 +1,11 @@
 c:\users\m_boyer\documents\visual studio 2013\Projects\MyBuild\MyBuild\bin\Debug\MyBuild.exe.config
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\bin\Debug\MyBuild.exe.config
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\bin\Debug\MyBuild.exe
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\bin\Debug\MyBuild.pdb
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.csprojResolveAssemblyReference.cache
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.Accueil.resources
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.Properties.Resources.resources
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.csproj.GenerateResource.Cache
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.exe
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.pdb
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.Entrainement_Form.resources
