@@ -16,5 +16,23 @@ namespace MyBuild
         {
             InitializeComponent();
         }
+
+        private void btn_Gestion_Click(object sender, EventArgs e)
+        {
+            btn_Entrainements.Visible = true;
+            btn_Exercices.Visible = true;
+            btn_Equipements.Visible = true;
+        }
+
+        private void Accueil_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Entrainements_Click(object sender, EventArgs e)
+        {
+            Entrainement_Form ef = new Entrainement_Form();
+            ef.Show();
+        }
     }
 }

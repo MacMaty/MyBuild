@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyBuild.BO
 {
-    class Type
+    class TypeEntrainement
     {
         public string Id { get; set; }
         public string Nom { get; set; }
 
-        public Type()
+        public TypeEntrainement()
         {
 
         }
