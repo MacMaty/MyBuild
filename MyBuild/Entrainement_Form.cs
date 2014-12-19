@@ -13,9 +13,10 @@ namespace MyBuild
 {
     public partial class Entrainement_Form : Form
     {
+        
         public Entrainement_Form()
         {
-            
+           DAL Manager = DAL.Instance;
             InitializeComponent();
             LoadCbxType();
             LoadCbxNbTours();
@@ -40,9 +41,9 @@ namespace MyBuild
 
         private void LoadCbxType()
         {
-            List<TypeEntrainement> lesType = new List<TypeEntrainement>();
+            List<TypeEntrainement> lesType = null;
+            //lesType = DAL.Instance.RecupTypeEntrainement();
             lesType = RecupTypeEntrainement();
- 
             cbx_TypeEntrainement.DataSource = lesType.ToArray();
             cbx_TypeEntrainement.DisplayMember = "Nom";
             cbx_TypeEntrainement.ValueMember = "Id";
@@ -50,22 +51,11 @@ namespace MyBuild
             
         }
 
-        private List<TypeEntrainement> RecupTypeEntrainement()
+        public List<TypeEntrainement> RecupTypeEntrainement()
         {
-            List<TypeEntrainement> list_TypeEntrainement = new List<TypeEntrainement>();
-
-            TypeEntrainement l_Activite = new TypeEntrainement();
-            l_Activite.Id = "str";
-            l_Activite.Nom = "Strenght";
-            list_TypeEntrainement.Add(l_Activite);
-
-            l_Activite = new TypeEntrainement();
-            l_Activite.Id = "for";
-            l_Activite.Nom = "Force";
-            list_TypeEntrainement.Add(l_Activite);
-
-            return list_TypeEntrainement;
+            return DAL.Instance.RecupTypeEntrainement();
         }
+      
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

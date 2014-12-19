@@ -54,6 +54,7 @@
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL.cs" />
     <Compile Include="Entrainement_Form.cs">
       <SubType>Form</SubType>
     </Compile>
