@@ -38,12 +38,11 @@
             this.cbx_TypeEntrainement = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbxExercices = new System.Windows.Forms.GroupBox();
+            this.btn_AddExo = new System.Windows.Forms.Button();
             this.btn_AjouterExercices = new System.Windows.Forms.Button();
-            this.cbx_nbrExercices = new System.Windows.Forms.ComboBox();
-            this.lbl_NbExercices = new System.Windows.Forms.Label();
-            this.lbl_CompteurTours = new System.Windows.Forms.Label();
             this.gbx_Entrainement = new System.Windows.Forms.GroupBox();
             this.tbx_Id = new System.Windows.Forms.TextBox();
+            this.btn_RemoveExo = new System.Windows.Forms.Button();
             this.gbxExercices.SuspendLayout();
             this.gbx_Entrainement.SuspendLayout();
             this.SuspendLayout();
@@ -129,55 +128,35 @@
             // 
             // gbxExercices
             // 
-            this.gbxExercices.Controls.Add(this.lbl_CompteurTours);
-            this.gbxExercices.Controls.Add(this.cbx_nbrExercices);
+            this.gbxExercices.Controls.Add(this.btn_RemoveExo);
+            this.gbxExercices.Controls.Add(this.btn_AddExo);
             this.gbxExercices.Controls.Add(this.btn_AjouterExercices);
-            this.gbxExercices.Controls.Add(this.lbl_NbExercices);
             this.gbxExercices.Location = new System.Drawing.Point(10, 129);
             this.gbxExercices.Name = "gbxExercices";
-            this.gbxExercices.Size = new System.Drawing.Size(271, 211);
+            this.gbxExercices.Size = new System.Drawing.Size(309, 211);
             this.gbxExercices.TabIndex = 10;
             this.gbxExercices.TabStop = false;
             this.gbxExercices.Text = "Exercices";
             // 
+            // btn_AddExo
+            // 
+            this.btn_AddExo.Location = new System.Drawing.Point(19, 19);
+            this.btn_AddExo.Name = "btn_AddExo";
+            this.btn_AddExo.Size = new System.Drawing.Size(26, 23);
+            this.btn_AddExo.TabIndex = 13;
+            this.btn_AddExo.Text = "+";
+            this.btn_AddExo.UseVisualStyleBackColor = true;
+            this.btn_AddExo.Click += new System.EventHandler(this.btn_AddExo_Click);
+            // 
             // btn_AjouterExercices
             // 
-            this.btn_AjouterExercices.Location = new System.Drawing.Point(6, 19);
+            this.btn_AjouterExercices.Location = new System.Drawing.Point(182, 72);
             this.btn_AjouterExercices.Name = "btn_AjouterExercices";
             this.btn_AjouterExercices.Size = new System.Drawing.Size(75, 23);
             this.btn_AjouterExercices.TabIndex = 12;
             this.btn_AjouterExercices.Text = "Ajouter";
             this.btn_AjouterExercices.UseVisualStyleBackColor = true;
             this.btn_AjouterExercices.Click += new System.EventHandler(this.btn_AjouterExercices_Click);
-            // 
-            // cbx_nbrExercices
-            // 
-            this.cbx_nbrExercices.FormattingEnabled = true;
-            this.cbx_nbrExercices.Location = new System.Drawing.Point(123, 57);
-            this.cbx_nbrExercices.Name = "cbx_nbrExercices";
-            this.cbx_nbrExercices.Size = new System.Drawing.Size(35, 21);
-            this.cbx_nbrExercices.TabIndex = 12;
-            this.cbx_nbrExercices.Visible = false;
-            // 
-            // lbl_NbExercices
-            // 
-            this.lbl_NbExercices.AutoSize = true;
-            this.lbl_NbExercices.Location = new System.Drawing.Point(6, 57);
-            this.lbl_NbExercices.Name = "lbl_NbExercices";
-            this.lbl_NbExercices.Size = new System.Drawing.Size(100, 13);
-            this.lbl_NbExercices.TabIndex = 11;
-            this.lbl_NbExercices.Text = "Nombre d\'exercices";
-            this.lbl_NbExercices.Visible = false;
-            // 
-            // lbl_CompteurTours
-            // 
-            this.lbl_CompteurTours.AutoSize = true;
-            this.lbl_CompteurTours.Location = new System.Drawing.Point(101, 24);
-            this.lbl_CompteurTours.Name = "lbl_CompteurTours";
-            this.lbl_CompteurTours.Size = new System.Drawing.Size(85, 13);
-            this.lbl_CompteurTours.TabIndex = 11;
-            this.lbl_CompteurTours.Text = "Nombre de tours";
-            this.lbl_CompteurTours.Visible = false;
             // 
             // gbx_Entrainement
             // 
@@ -192,7 +171,7 @@
             this.gbx_Entrainement.Controls.Add(this.label1);
             this.gbx_Entrainement.Location = new System.Drawing.Point(12, 62);
             this.gbx_Entrainement.Name = "gbx_Entrainement";
-            this.gbx_Entrainement.Size = new System.Drawing.Size(325, 370);
+            this.gbx_Entrainement.Size = new System.Drawing.Size(339, 370);
             this.gbx_Entrainement.TabIndex = 11;
             this.gbx_Entrainement.TabStop = false;
             this.gbx_Entrainement.Text = "Entrainement";
@@ -206,6 +185,16 @@
             this.tbx_Id.TabIndex = 12;
             this.tbx_Id.Visible = false;
             // 
+            // btn_RemoveExo
+            // 
+            this.btn_RemoveExo.Location = new System.Drawing.Point(51, 19);
+            this.btn_RemoveExo.Name = "btn_RemoveExo";
+            this.btn_RemoveExo.Size = new System.Drawing.Size(26, 23);
+            this.btn_RemoveExo.TabIndex = 14;
+            this.btn_RemoveExo.Text = "-";
+            this.btn_RemoveExo.UseVisualStyleBackColor = true;
+            this.btn_RemoveExo.Click += new System.EventHandler(this.btn_RemoveExo_Click);
+            // 
             // Entrainement_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,7 +207,6 @@
             this.Text = "Entrainement";
             this.Load += new System.EventHandler(this.Entrainement_Form_Load);
             this.gbxExercices.ResumeLayout(false);
-            this.gbxExercices.PerformLayout();
             this.gbx_Entrainement.ResumeLayout(false);
             this.gbx_Entrainement.PerformLayout();
             this.ResumeLayout(false);
@@ -238,11 +226,10 @@
         private System.Windows.Forms.ComboBox cbx_TypeEntrainement;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox gbxExercices;
-        private System.Windows.Forms.Label lbl_CompteurTours;
-        private System.Windows.Forms.ComboBox cbx_nbrExercices;
         private System.Windows.Forms.Button btn_AjouterExercices;
-        private System.Windows.Forms.Label lbl_NbExercices;
         private System.Windows.Forms.GroupBox gbx_Entrainement;
         private System.Windows.Forms.TextBox tbx_Id;
+        private System.Windows.Forms.Button btn_AddExo;
+        private System.Windows.Forms.Button btn_RemoveExo;
     }
 }

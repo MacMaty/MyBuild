@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBuild.BO
 {
-    class TypeEntrainement
+    public class TypeEntrainement
     {
         public string Id { get; set; }
         public string Nom { get; set; }

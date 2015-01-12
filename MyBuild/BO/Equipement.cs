@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBuild.BO
 {
-    class Equipement
+    public class Equipement
     {
         public string Id { get; set; }
         public string Nom { get; set; }

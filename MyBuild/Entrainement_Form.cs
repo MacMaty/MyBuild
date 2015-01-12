@@ -13,6 +13,8 @@ namespace MyBuild
 {
     public partial class Entrainement_Form : Form
     {
+        private int nbExercices = 0;
+        int x = 20, y = 50;
         
         public Entrainement_Form()
         {
@@ -20,20 +22,42 @@ namespace MyBuild
             InitializeComponent();
             LoadCbxType();
             LoadCbxNbTours();
-            LoadCbxNbExercices();
+            
+            
         }
 
-        private void LoadCbxNbExercices()
+        private void LoadCbxExercices(int p_nbExercices)
         {
-            for (int i = 0; i <= 10; i++)
-            {
-                cbx_nbrExercices.Items.Add(i);
-            }
+            
+           string typeExo = cbx_TypeEntrainement.SelectedValue.ToString();
+           // for (int i = nbExercices; i < p_nbExercices; i++)
+           // {
+                
+                ComboBox cb1 = new ComboBox();
+                //cb1.Name = "cbExo" + i+1;
+                cb1.Name = "cbExo" + (nbExercices+1);
+                gbxExercices.Controls.Add(cb1);
+                cb1.Width = 160;
+                cb1.Location = new Point(x,y);
+                LoadCbxExercices(cb1, typeExo);
+                y += 20;
+                nbExercices++;
+           // }
         }
 
+        private void LoadCbxExercices(ComboBox cb, string p_typeExercice)
+        {
+            List<Exercice> lesExercices = null;
+            lesExercices = RecupExercice(p_typeExercice);
+            cb.DataSource = lesExercices.ToArray();
+            cb.DisplayMember = "Nom";
+            cb.ValueMember = "Id";
+        }
+
+     
         private void LoadCbxNbTours()
         {
-            for (int i =0;i<=10;i++)
+            for (int i =1;i<=10;i++)
             {
                 cbx_nbTours.Items.Add(i);
             }
@@ -49,6 +73,10 @@ namespace MyBuild
             cbx_TypeEntrainement.ValueMember = "Id";
  
             
+        }
+        public List<Exercice> RecupExercice(string p_typeExercice)
+        {
+            return DAL.Instance.RecupExercice(p_typeExercice);
         }
 
         public List<TypeEntrainement> RecupTypeEntrainement()
@@ -85,9 +113,42 @@ namespace MyBuild
 
         private void btn_AjouterExercices_Click(object sender, EventArgs e)
         {
-            lbl_CompteurTours.Visible = true;
-            lbl_NbExercices.Visible = true;
-            cbx_nbrExercices.Visible = true;
+          
+            
+        }
+
+        private void cbx_nbrExercices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
+            
+        }
+
+        private void btn_AddExo_Click(object sender, EventArgs e)
+        {
+
+                LoadCbxExercices(nbExercices);
+
+        }
+
+        private void btn_RemoveExo_Click(object sender, EventArgs e)
+        {
+            
+            SuppCbxExo();
+        }
+
+        private void SuppCbxExo()
+        {
+            gbxExercices.Controls.RemoveByKey("cbExo" + (nbExercices));
+            if (y >= 50)
+            {
+                if (nbExercices >= 1)
+                {
+                    y -= 20;
+                    nbExercices--;
+                }
+            
+            }
         }
     }
 }
