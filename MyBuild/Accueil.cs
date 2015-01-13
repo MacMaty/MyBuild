@@ -34,5 +34,11 @@ namespace MyBuild
             Entrainement_Form ef = new Entrainement_Form();
             ef.Show();
         }
+
+        private void btn_Exercices_Click(object sender, EventArgs e)
+        {
+            Exercice_Form ef = new Exercice_Form();
+            ef.Show();
+        }
     }
 }

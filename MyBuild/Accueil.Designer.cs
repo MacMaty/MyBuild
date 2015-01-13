@@ -84,6 +84,7 @@
             this.btn_Exercices.Text = "Exercices";
             this.btn_Exercices.UseVisualStyleBackColor = true;
             this.btn_Exercices.Visible = false;
+            this.btn_Exercices.Click += new System.EventHandler(this.btn_Exercices_Click);
             // 
             // btn_Equipements
             // 
