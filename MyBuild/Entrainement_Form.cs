@@ -181,12 +181,11 @@ namespace MyBuild
         private void SuppCbxExo()
         {
            
-                
-
                 if (y >= 50)
                 {
                     if (nbExercices >= 1)
                     {
+                        lentrainement.lesExos.RemoveAt(nbExercices-1);
                         gbxExercices.Controls.Remove(lesExercicesCbx[nbExercices-1]);
                         gbxExercices.Controls.Remove(lesnbExericicesCbx[nbExercices-1]);
                         lesnbExericicesCbx.RemoveAt(nbExercices - 1);
