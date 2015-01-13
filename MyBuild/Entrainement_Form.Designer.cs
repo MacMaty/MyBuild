@@ -38,11 +38,11 @@
             this.cbx_TypeEntrainement = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbxExercices = new System.Windows.Forms.GroupBox();
+            this.btn_RemoveExo = new System.Windows.Forms.Button();
             this.btn_AddExo = new System.Windows.Forms.Button();
             this.btn_AjouterExercices = new System.Windows.Forms.Button();
             this.gbx_Entrainement = new System.Windows.Forms.GroupBox();
             this.tbx_Id = new System.Windows.Forms.TextBox();
-            this.btn_RemoveExo = new System.Windows.Forms.Button();
             this.gbxExercices.SuspendLayout();
             this.gbx_Entrainement.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +138,16 @@
             this.gbxExercices.TabStop = false;
             this.gbxExercices.Text = "Exercices";
             // 
+            // btn_RemoveExo
+            // 
+            this.btn_RemoveExo.Location = new System.Drawing.Point(51, 19);
+            this.btn_RemoveExo.Name = "btn_RemoveExo";
+            this.btn_RemoveExo.Size = new System.Drawing.Size(26, 23);
+            this.btn_RemoveExo.TabIndex = 14;
+            this.btn_RemoveExo.Text = "-";
+            this.btn_RemoveExo.UseVisualStyleBackColor = true;
+            this.btn_RemoveExo.Click += new System.EventHandler(this.btn_RemoveExo_Click);
+            // 
             // btn_AddExo
             // 
             this.btn_AddExo.Location = new System.Drawing.Point(19, 19);
@@ -150,7 +160,7 @@
             // 
             // btn_AjouterExercices
             // 
-            this.btn_AjouterExercices.Location = new System.Drawing.Point(182, 72);
+            this.btn_AjouterExercices.Location = new System.Drawing.Point(228, 74);
             this.btn_AjouterExercices.Name = "btn_AjouterExercices";
             this.btn_AjouterExercices.Size = new System.Drawing.Size(75, 23);
             this.btn_AjouterExercices.TabIndex = 12;
@@ -184,16 +194,6 @@
             this.tbx_Id.Size = new System.Drawing.Size(100, 20);
             this.tbx_Id.TabIndex = 12;
             this.tbx_Id.Visible = false;
-            // 
-            // btn_RemoveExo
-            // 
-            this.btn_RemoveExo.Location = new System.Drawing.Point(51, 19);
-            this.btn_RemoveExo.Name = "btn_RemoveExo";
-            this.btn_RemoveExo.Size = new System.Drawing.Size(26, 23);
-            this.btn_RemoveExo.TabIndex = 14;
-            this.btn_RemoveExo.Text = "-";
-            this.btn_RemoveExo.UseVisualStyleBackColor = true;
-            this.btn_RemoveExo.Click += new System.EventHandler(this.btn_RemoveExo_Click);
             // 
             // Entrainement_Form
             // 

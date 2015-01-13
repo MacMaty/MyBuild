@@ -13,8 +13,12 @@ namespace MyBuild
 {
     public partial class Entrainement_Form : Form
     {
+        Entrainement lentrainement = new Entrainement();
         private int nbExercices = 0;
         int x = 20, y = 50;
+        List<ComboBox> lesExercicesCbx = null;
+        List<ComboBox> lesnbExericicesCbx = null;
+        
         
         public Entrainement_Form()
         {
@@ -22,27 +26,55 @@ namespace MyBuild
             InitializeComponent();
             LoadCbxType();
             LoadCbxNbTours();
+            lesExercicesCbx = new List<ComboBox>();
+            lesnbExericicesCbx = new List<ComboBox>();
             
             
         }
 
         private void LoadCbxExercices(int p_nbExercices)
         {
+           AddCbExo();
+           
+
+           y += 20;
+        }
+
+        private void AddCbNbFoisExo()
+        {
+            string typeExo = cbx_TypeEntrainement.SelectedValue.ToString();
+            ComboBox cb1 = new ComboBox();
+            //cb1.Name = "cbExo" + i+1;
+            cb1.Name = "cbNbExo" + (nbExercices + 1);
+            gbxExercices.Controls.Add(cb1);
+            cb1.Width = 40;
+            cb1.Location = new Point(x+165, y);
+            LoadCbxNbFoisExercices(cb1);
+            lesnbExericicesCbx.Add(cb1);
             
-           string typeExo = cbx_TypeEntrainement.SelectedValue.ToString();
-           // for (int i = nbExercices; i < p_nbExercices; i++)
-           // {
-                
-                ComboBox cb1 = new ComboBox();
-                //cb1.Name = "cbExo" + i+1;
-                cb1.Name = "cbExo" + (nbExercices+1);
-                gbxExercices.Controls.Add(cb1);
-                cb1.Width = 160;
-                cb1.Location = new Point(x,y);
-                LoadCbxExercices(cb1, typeExo);
-                y += 20;
-                nbExercices++;
-           // }
+        }
+
+        private void LoadCbxNbFoisExercices(ComboBox cb1)
+        {
+            for (int i = 0; i < 250; i = i + 10)
+            {
+                    cb1.Items.Add(i);  
+            }
+        }
+
+        private void AddCbExo()
+        {
+            string typeExo = cbx_TypeEntrainement.SelectedValue.ToString();
+            ComboBox cb1 = new ComboBox();
+            //cb1.Name = "cbExo" + i+1;
+            cb1.Name = "cbExo" + (nbExercices + 1);
+            gbxExercices.Controls.Add(cb1);
+            cb1.Width = 160;
+            cb1.Location = new Point(x, y);
+            LoadCbxExercices(cb1, typeExo);
+            lesExercicesCbx.Add(cb1);
+            AddCbNbFoisExo();
+            nbExercices++;
         }
 
         private void LoadCbxExercices(ComboBox cb, string p_typeExercice)
@@ -66,7 +98,6 @@ namespace MyBuild
         private void LoadCbxType()
         {
             List<TypeEntrainement> lesType = null;
-            //lesType = DAL.Instance.RecupTypeEntrainement();
             lesType = RecupTypeEntrainement();
             cbx_TypeEntrainement.DataSource = lesType.ToArray();
             cbx_TypeEntrainement.DisplayMember = "Nom";
@@ -113,7 +144,17 @@ namespace MyBuild
 
         private void btn_AjouterExercices_Click(object sender, EventArgs e)
         {
-          
+  
+            for (int i = 0; i < nbExercices;i++ )
+            {
+                ComboBox laComboExercice = lesExercicesCbx[i];
+                ComboBox laComboNbtour = lesnbExericicesCbx[i];
+                Exercice lexercices = new Exercice();
+                lexercices.Id = laComboExercice.SelectedValue.ToString();
+                lexercices.leNbdeFois = Convert.ToInt32(laComboNbtour.SelectedItem.ToString());
+                lentrainement.lesExos.Add(lexercices);
+   
+            }
             
         }
 
@@ -139,16 +180,23 @@ namespace MyBuild
 
         private void SuppCbxExo()
         {
-            gbxExercices.Controls.RemoveByKey("cbExo" + (nbExercices));
-            if (y >= 50)
-            {
-                if (nbExercices >= 1)
+           
+                
+
+                if (y >= 50)
                 {
-                    y -= 20;
-                    nbExercices--;
+                    if (nbExercices >= 1)
+                    {
+                        gbxExercices.Controls.Remove(lesExercicesCbx[nbExercices-1]);
+                        gbxExercices.Controls.Remove(lesnbExericicesCbx[nbExercices-1]);
+                        lesnbExericicesCbx.RemoveAt(nbExercices - 1);
+                        lesExercicesCbx.RemoveAt(nbExercices - 1);
+                        y -= 20;
+                        nbExercices--;
+                    }
+
                 }
-            
             }
-        }
+            
     }
 }

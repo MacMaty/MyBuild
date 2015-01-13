@@ -12,7 +12,7 @@ namespace MyBuild.BO
         public string Nom { get; set; }
         public int Recompense { get; set; }
         public TypeEntrainement LeType { get; set; }
-        private List<Exercice> lesExos = null;
+        public List<Exercice> lesExos = null;
         
         public Entrainement()
         {

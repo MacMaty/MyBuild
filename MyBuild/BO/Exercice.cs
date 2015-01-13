@@ -10,6 +10,7 @@ namespace MyBuild.BO
     {
         public string Id { get; set; }
         public string Nom { get; set; }
+        public int leNbdeFois { get; set; }
         public int Recompense { get; set; }
         public TypeEntrainement LeType { get; set; }
         public List<Equipement> lesEquipement=null;
