@@ -75,6 +75,12 @@ namespace MyBuild
             lesExercicesCbx.Add(cb1);
             AddCbNbFoisExo();
             nbExercices++;
+            if (nbExercices > 0)
+            {
+
+                cbx_TypeEntrainement.Enabled = false;
+            }
+            else { cbx_TypeEntrainement.Enabled = true; }
         }
 
         private void LoadCbxExercices(ComboBox cb, string p_typeExercice)
@@ -146,6 +152,7 @@ namespace MyBuild
 
         private void btn_AjouterExercices_Click(object sender, EventArgs e)
         {
+            
   
             for (int i = 0; i < nbExercices;i++ )
             {
@@ -157,6 +164,7 @@ namespace MyBuild
                 lentrainement.lesExos.Add(lexercices);
    
             }
+           
             
         }
 
@@ -177,7 +185,14 @@ namespace MyBuild
         private void btn_RemoveExo_Click(object sender, EventArgs e)
         {
             
+            
             SuppCbxExo();
+            if (nbExercices > 0)
+            {
+
+                cbx_TypeEntrainement.Enabled = false;
+            }
+            else { cbx_TypeEntrainement.Enabled = true; }
         }
 
         private void SuppCbxExo()
