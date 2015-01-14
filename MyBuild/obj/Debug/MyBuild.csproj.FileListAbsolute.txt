@@ -21,3 +21,4 @@ C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.Properties.R
 C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.csproj.GenerateResource.Cache
 C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.exe
 C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.pdb
+C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.Exercice_Form.resources

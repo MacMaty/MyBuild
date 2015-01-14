@@ -13,17 +13,14 @@ namespace MyBuild.BO
         public int leNbdeFois { get; set; }
         public int Recompense { get; set; }
         public TypeEntrainement LeType { get; set; }
-        public List<Equipement> lesEquipement=null;
+        public Equipement lEquipement=null;
 
         public Exercice()
         {
-            lesEquipement = new List<Equipement>();
+            lEquipement = new Equipement();
         }
 
-        public void AddEquipement(Equipement lequipement)
-        {
-            lesEquipement.Add(lequipement);
-        }
+        
         
     }
 }

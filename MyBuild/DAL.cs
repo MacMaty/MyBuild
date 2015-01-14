@@ -48,12 +48,35 @@ namespace MyBuild
 
        public List<Exercice> RecupExercice(string p_typeExercice)
        {
-           /*cnx.Open();
+           
            SqlCommand cmd = new SqlCommand("dbo.RecupExercice", cnx);
            cmd.CommandType = CommandType.StoredProcedure;
            //SqlParameter sqlParam = new SqlParameter("@typeExercice", p_typeExercice);
            cmd.Parameters.Add("@typeExercice", SqlDbType.NVarChar).Value = p_typeExercice;
-           SqlDataReader rdr = cmd.ExecuteReader();*/
+
+           SqlDataAdapter adapter = new SqlDataAdapter();
+           adapter.SelectCommand = cmd;
+
+           //Remplir le DataSet
+           DsMyBuild dsDataMyBuild = new DsMyBuild();
+           adapter.Fill(dsDataMyBuild, dsDataMyBuild.TableExercice.TableName);
+           var myData = dsDataMyBuild.Tables[2].AsEnumerable().Select(dataRow => new Exercice
+           {
+               Id = dataRow.Field<string>("Id").Trim(),
+               Nom = dataRow.Field<string>("Nom").Trim(),
+               Recompense = Convert.ToInt32(dataRow.Field<string>("Recompense")),
+               lEquipement = new Equipement{
+                   Id = dataRow.Field<string>("IdEquipement").Trim(),
+                   Nom = dataRow.Field<string>("NomEquipement").Trim()
+               }
+           });
+           var list = myData.ToList();
+           return list;    
+
+
+           /*
+           SqlDataReader rdr = cmd.ExecuteReader();
+
            List<Exercice> list_Exercice = new List<Exercice>();
            /*while(rdr.Read())
            {
@@ -65,7 +88,7 @@ namespace MyBuild
                list_Exercice.Add(l_exercice);
            }
            rdr.Close();
-           cnx.Close();*/
+           cnx.Close();
            Exercice l_Activite = new Exercice();
            l_Activite.Id = "pup";
            l_Activite.Nom = "Pushups";
@@ -81,7 +104,7 @@ namespace MyBuild
            
 
 
-           return list_Exercice;
+           return list_Exercice;*/
        }
 
         public void AjouterExoEntrainement(string IdEntrainement,string idExercice, int nbfoisExercice)
@@ -119,16 +142,21 @@ namespace MyBuild
             
 
             Equipement lequipement = new Equipement();
-            lequipement.Id = "bar";
-            lequipement.Nom = "Barre de traction";
-            lesEquipement.Add(lequipement);
-            lequipement = new Equipement();
-            lequipement.Id = "100";
-            lequipement.Nom = "100 Mètres";
-            lesEquipement.Add(lequipement);
-            DataSet ds = new DataSet();
-            
-            return lesEquipement;
+            SqlCommand cmd = new SqlCommand("dbo.RecupEquipement", cnx);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+
+            // Remplir le DataSet
+            DsMyBuild DsDataMyBuild = new DsMyBuild();
+            adapter.Fill(DsDataMyBuild, DsDataMyBuild.TableEquipement.TableName);
+            var myData = DsDataMyBuild.Tables["TableEquipement"].AsEnumerable().Select(dataRow => new Equipement
+            {
+                Id = dataRow.Field<string>("Id").Trim(),
+                Nom = dataRow.Field<string>("Nom").Trim(),
+
+            });
+            var list = myData.ToList();
+            return list;    
 
         }
 
@@ -154,6 +182,33 @@ namespace MyBuild
             finally{
                  
            cnx.Close();
+            }
+        }
+
+        internal void AjouterExercice(Exercice lexercice)
+        {
+            try
+            {
+                cnx.Open();
+                SqlCommand cmd = new SqlCommand("dbo.AjouterExercice", cnx);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@idExercice", SqlDbType.NVarChar).Value = lexercice.Id.Trim();
+                cmd.Parameters.Add("@nomExercice", SqlDbType.NVarChar).Value = lexercice.Nom.Trim();
+                cmd.Parameters.Add("@recompense", SqlDbType.Int).Value = lexercice.Recompense;
+                cmd.Parameters.Add("@idEquipement", SqlDbType.NVarChar).Value = lexercice.lEquipement.Id.Trim();
+                cmd.Parameters.Add("@idTypeEntrainement", SqlDbType.NVarChar).Value = lexercice.LeType.Id.Trim();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+                cnx.Close();
             }
         }
     }

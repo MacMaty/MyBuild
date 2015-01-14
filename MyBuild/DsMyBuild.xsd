@@ -28,6 +28,17 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="TableExercice" msprop:Generator_TableClassName="TableExerciceDataTable" msprop:Generator_TableVarName="tableTableExercice" msprop:Generator_TablePropName="TableExercice" msprop:Generator_RowDeletingName="TableExerciceRowDeleting" msprop:Generator_RowChangingName="TableExerciceRowChanging" msprop:Generator_RowEvHandlerName="TableExerciceRowChangeEventHandler" msprop:Generator_RowDeletedName="TableExerciceRowDeleted" msprop:Generator_UserTableName="TableExercice" msprop:Generator_RowChangedName="TableExerciceRowChanged" msprop:Generator_RowEvArgName="TableExerciceRowChangeEvent" msprop:Generator_RowClassName="TableExerciceRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+              <xs:element name="Nom" msprop:Generator_ColumnVarNameInTable="columnNom" msprop:Generator_ColumnPropNameInRow="Nom" msprop:Generator_ColumnPropNameInTable="NomColumn" msprop:Generator_UserColumnName="Nom" type="xs:string" minOccurs="0" />
+              <xs:element name="Recompense" msprop:Generator_ColumnVarNameInTable="columnRecompense" msprop:Generator_ColumnPropNameInRow="Recompense" msprop:Generator_ColumnPropNameInTable="RecompenseColumn" msprop:Generator_UserColumnName="Recompense" type="xs:string" minOccurs="0" />
+              <xs:element name="idEquipement" msprop:Generator_ColumnVarNameInTable="columnidEquipement" msprop:Generator_ColumnPropNameInRow="idEquipement" msprop:Generator_ColumnPropNameInTable="idEquipementColumn" msprop:Generator_UserColumnName="idEquipement" type="xs:string" minOccurs="0" />
+              <xs:element name="NomEquipement" msprop:Generator_ColumnVarNameInTable="columnNomEquipement" msprop:Generator_ColumnPropNameInRow="NomEquipement" msprop:Generator_ColumnPropNameInTable="NomEquipementColumn" msprop:Generator_UserColumnName="NomEquipement" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

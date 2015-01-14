@@ -37,8 +37,8 @@ namespace MyBuild
 
         private void btn_Exercices_Click(object sender, EventArgs e)
         {
-            //Exercice_Form ef = new Exercice_Form();
-            //ef.Show();
+            Exercice_Form ef = new Exercice_Form();
+            ef.Show();
         }
 
         private void btn_Equipements_Click(object sender, EventArgs e)
