@@ -61,11 +61,11 @@
     <Compile Include="Entrainement_Form.Designer.cs">
       <DependentUpon>Entrainement_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exercice_Form.cs">
+    <Compile Include="Equipement_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exercice_Form.Designer.cs">
-      <DependentUpon>Exercice_Form.cs</DependentUpon>
+    <Compile Include="Equipement_Form.Designer.cs">
+      <DependentUpon>Equipement_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +74,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entrainement_Form.resx">
       <DependentUpon>Entrainement_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipement_Form.resx">
+      <DependentUpon>Equipement_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

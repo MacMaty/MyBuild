@@ -121,5 +121,28 @@ namespace MyBuild
         }
 
 
+
+        internal void AjouterEquipement(Equipement lequipement)
+        {
+            try
+            {
+                cnx.Open();
+                SqlCommand cmd = new SqlCommand("dbo.AjouterEquipement", cnx);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@IdEquipement", SqlDbType.NVarChar).Value = lequipement.Id;
+                cmd.Parameters.Add("@NomEquipement", SqlDbType.NVarChar).Value = lequipement.Nom;
+                cmd.ExecuteNonQuery();
+               
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally{
+                 
+           cnx.Close();
+            }
+        }
     }
 }

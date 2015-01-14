@@ -19,3 +19,4 @@ C:\Users\Mathieu\Documents\Visual Studio 2012\Projects\MyBuild\MyBuild\obj\Debug
 C:\Users\Mathieu\Documents\Visual Studio 2012\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.csproj.GenerateResource.Cache
 C:\Users\Mathieu\Documents\Visual Studio 2012\Projects\MyBuild\MyBuild\bin\Debug\MyBuild.exe
 C:\Users\Mathieu\Documents\Visual Studio 2012\Projects\MyBuild\MyBuild\bin\Debug\MyBuild.pdb
+C:\Users\Mathieu\Documents\Visual Studio 2012\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.Equipement_Form.resources

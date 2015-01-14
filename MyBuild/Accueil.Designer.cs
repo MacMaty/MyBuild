@@ -95,6 +95,7 @@
             this.btn_Equipements.Text = "Equipements";
             this.btn_Equipements.UseVisualStyleBackColor = true;
             this.btn_Equipements.Visible = false;
+            this.btn_Equipements.Click += new System.EventHandler(this.btn_Equipements_Click);
             // 
             // Accueil
             // 
