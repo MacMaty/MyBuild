@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txt_IdEquipement = new System.Windows.Forms.TextBox();
             this.txt_NomEquipement = new System.Windows.Forms.TextBox();
             this.btn_Valider = new System.Windows.Forms.Button();
+            this.dgv_Equipement = new System.Windows.Forms.DataGridView();
+            this.equipementBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Equipement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_IdEquipement
@@ -58,17 +63,32 @@
             this.btn_Valider.UseVisualStyleBackColor = true;
             this.btn_Valider.Click += new System.EventHandler(this.btn_Valider_Click);
             // 
+            // dgv_Equipement
+            // 
+            this.dgv_Equipement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Equipement.Location = new System.Drawing.Point(472, 92);
+            this.dgv_Equipement.Name = "dgv_Equipement";
+            this.dgv_Equipement.Size = new System.Drawing.Size(160, 267);
+            this.dgv_Equipement.TabIndex = 3;
+            // 
+            // equipementBindingSource
+            // 
+            this.equipementBindingSource.DataSource = typeof(MyBuild.BO.Equipement);
+            // 
             // Equipement_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(834, 621);
+            this.Controls.Add(this.dgv_Equipement);
             this.Controls.Add(this.btn_Valider);
             this.Controls.Add(this.txt_NomEquipement);
             this.Controls.Add(this.txt_IdEquipement);
             this.Name = "Equipement_Form";
             this.Text = "Equipement_Form";
             this.Load += new System.EventHandler(this.Equipement_Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Equipement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,5 +99,7 @@
         private System.Windows.Forms.TextBox txt_IdEquipement;
         private System.Windows.Forms.TextBox txt_NomEquipement;
         private System.Windows.Forms.Button btn_Valider;
+        private System.Windows.Forms.DataGridView dgv_Equipement;
+        private System.Windows.Forms.BindingSource equipementBindingSource;
     }
 }

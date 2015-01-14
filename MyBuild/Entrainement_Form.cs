@@ -112,7 +112,9 @@ namespace MyBuild
 
         public List<TypeEntrainement> RecupTypeEntrainement()
         {
-            return DAL.Instance.RecupTypeEntrainement();
+            return  DAL.Instance.RecupTypeEntrainement();
+ 
+            
         }
       
 
@@ -185,7 +187,8 @@ namespace MyBuild
                 {
                     if (nbExercices >= 1)
                     {
-                        lentrainement.lesExos.RemoveAt(nbExercices-1);
+                        if(lentrainement.lesExos.Count>0)
+                        { lentrainement.lesExos.RemoveAt(nbExercices - 1); }                        
                         gbxExercices.Controls.Remove(lesExercicesCbx[nbExercices-1]);
                         gbxExercices.Controls.Remove(lesnbExericicesCbx[nbExercices-1]);
                         lesnbExericicesCbx.RemoveAt(nbExercices - 1);

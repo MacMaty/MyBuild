@@ -11,9 +11,10 @@ namespace MyBuild
 {
     public class DAL
     {
-
+       List<Equipement> lesEquipement = new List<Equipement>();
        private static DAL instance;
-       const string cnxString = @"Data Source =TOSHIBA-MAT\BASEPCMATHIEU; Initial Catalog=MyBuild;Integrated Security=SSPI";
+       //const string cnxString = @"Data Source =TOSHIBA-MAT\BASEPCMATHIEU; Initial Catalog=MyBuild;Integrated Security=SSPI";
+       const string cnxString = @"Data Source =B2V-CZC3306VZC\SQLEXPRESS; Initial Catalog=MyBuild;Integrated Security=SSPI";
        SqlConnection cnx = null;
        public DAL() {
            cnx = new SqlConnection(cnxString);
@@ -31,38 +32,18 @@ namespace MyBuild
           }
        }
 
-       public  List<TypeEntrainement> RecupTypeEntrainement()
+       public List<TypeEntrainement> RecupTypeEntrainement()
        {
-           /*cnx.Open();
-           SqlCommand cmd = new SqlCommand("dbo.RecupType", cnx);
-           cmd.CommandType = CommandType.StoredProcedure;
-           SqlDataReader dr = cmd.ExecuteReader();*/
+           SqlCommand cmd = new SqlCommand("dbo.RecupTypeEntrainement", cnx);
+           SqlDataAdapter adapter = new SqlDataAdapter();
+           adapter.SelectCommand = cmd;
 
-           List<TypeEntrainement> list_TypeEntrainement = new List<TypeEntrainement>();
-          /* while (dr.Read())
-           {
-               TypeEntrainement l_Activite = new TypeEntrainement();
-               l_Activite.Id = dr["id"].ToString().Trim();
-               l_Activite.Nom = dr["name"].ToString().Trim();
-               list_TypeEntrainement.Add(l_Activite);
- 
-           }
-
-           dr.Close();
-           cnx.Close();*/
-           TypeEntrainement l_Activite = new TypeEntrainement();
-           l_Activite.Id = "for";
-           l_Activite.Nom = "Force";
-           list_TypeEntrainement.Add(l_Activite);
-           l_Activite = new TypeEntrainement();
-           l_Activite.Id = "str";
-           l_Activite.Nom = "Strenght";
-           list_TypeEntrainement.Add(l_Activite);
-           l_Activite = new TypeEntrainement();
-           l_Activite.Id = "stand";
-           l_Activite.Nom = "Standard";
-           list_TypeEntrainement.Add(l_Activite);
-           return list_TypeEntrainement;
+           // Remplir le DataSet
+           DsMyBuild DsDataMyBuild = new DsMyBuild();
+           adapter.Fill(DsDataMyBuild, DsDataMyBuild.TableEquipement.TableName);
+           var myData = DsDataMyBuild.Tables[0].AsEnumerable().Select(dataRow => new TypeEntrainement { Id = dataRow.Field<string>("Id").Trim(), Nom = dataRow.Field<string>("Nom").Trim() });
+           var list = myData.ToList();
+           return list;          
        }
 
        public List<Exercice> RecupExercice(string p_typeExercice)
@@ -120,9 +101,40 @@ namespace MyBuild
             }
         }
 
+        public DsMyBuild RecupEquipementDB()
+        {// TODO : Faire la suite de la procédure
+            SqlCommand cmd = new SqlCommand("dbo.RecupEquipement", cnx);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+
+            // Remplir le DataSet
+            DsMyBuild DsDataMyBuild = new DsMyBuild();
+            adapter.Fill(DsDataMyBuild, DsDataMyBuild.TableEquipement.TableName);
+
+            return DsDataMyBuild;
+        }
+
+        internal List<Equipement> RecupEquipement()
+        {
+            
+
+            Equipement lequipement = new Equipement();
+            lequipement.Id = "bar";
+            lequipement.Nom = "Barre de traction";
+            lesEquipement.Add(lequipement);
+            lequipement = new Equipement();
+            lequipement.Id = "100";
+            lequipement.Nom = "100 Mètres";
+            lesEquipement.Add(lequipement);
+            DataSet ds = new DataSet();
+            
+            return lesEquipement;
+
+        }
 
 
-        internal void AjouterEquipement(Equipement lequipement)
+
+        internal void AjouterEquipementDB(Equipement lequipement)
         {
             try
             {
@@ -130,8 +142,8 @@ namespace MyBuild
                 SqlCommand cmd = new SqlCommand("dbo.AjouterEquipement", cnx);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@IdEquipement", SqlDbType.NVarChar).Value = lequipement.Id;
-                cmd.Parameters.Add("@NomEquipement", SqlDbType.NVarChar).Value = lequipement.Nom;
+                cmd.Parameters.Add("@Id", SqlDbType.NVarChar).Value = lequipement.Id.Trim();
+                cmd.Parameters.Add("@Nom", SqlDbType.NVarChar).Value = lequipement.Nom.Trim();
                 cmd.ExecuteNonQuery();
                
             }
