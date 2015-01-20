@@ -133,29 +133,6 @@ namespace MyBuild
         public List<TypeEntrainement> RecupTypeEntrainement()
         {
             return  DAL.Instance.RecupTypeEntrainement();
- 
-            
-        }
-      
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Entrainement_Form_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void btn_AjouterEntrainement_Click(object sender, EventArgs e)
@@ -166,9 +143,6 @@ namespace MyBuild
 
         private void btn_AjouterExercices_Click(object sender, EventArgs e)
         {
-                    
-
-          
                 for (int p = 0; p < nbExercices; p++)
                 {
                     ComboBox laComboExercice = lesExercicesCbx[p];
@@ -187,15 +161,9 @@ namespace MyBuild
                 {
                     rtxt_log.Text += "\n" + lexo.leNbdeFois.ToString() + " x " + lexo.Nom.ToString();
                 }
-            
         }
 
-        private void cbx_nbrExercices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            
-            
-        }
+       
 
         private void btn_AddExo_Click(object sender, EventArgs e)
         {
@@ -214,7 +182,6 @@ namespace MyBuild
             SuppCbxExo();
             if (nbExercices > 0)
             {
-
                 cbx_TypeEntrainement.Enabled = false;
             }
             else { cbx_TypeEntrainement.Enabled = true;
@@ -225,7 +192,6 @@ namespace MyBuild
 
         private void SuppCbxExo()
         {
-           
                 if (y >= 50)
                 {
                     if (nbExercices >= 1)
@@ -237,7 +203,6 @@ namespace MyBuild
                         { return (match.Name == "cbExo" + nbExercices); });*/
 
                         ComboBox lnbSup = lesnbExericicesCbx.First(a => a.Name == "cbNbExo" + nbExercices);
-
                         /*ComboBox lnbSup = lesnbExericicesCbx.Find(delegate(ComboBox match)
                         { return (match.Name == "cbNbExo" + nbExercices); });*/
                         //ComboBox lexoSup = lesExercicesCbx[nbExercices - 1];
@@ -252,9 +217,11 @@ namespace MyBuild
                         y -= 20;
                         nbExercices--;
                     }
-
                 }
             }
+        /// <summary>
+        /// Supprime tous les controles dans la partie Exercice 
+        /// </summary>
         private void SuppAllcbxExo()
         {
             if (y >= 50)
@@ -265,6 +232,7 @@ namespace MyBuild
                     {                
                         foreach(ComboBox lexo in lesExercicesCbx)
                         {
+                            // supprime les contrôles de l'interface
                             gbxExercices.Controls.Remove(lexo);
                             nbExercices--;
                         }
@@ -276,10 +244,9 @@ namespace MyBuild
                     }
                     btn_AjouterExercices.Visible = false;
                 }
+                    // supprime les controles de ma liste 
                     lesExercicesCbx.RemoveRange(0,lesExercicesCbx.Count);
                     lesnbExericicesCbx.RemoveRange(0, lesnbExericicesCbx.Count); ;
-                
-
 
                     y = 50;
                 
@@ -301,14 +268,12 @@ namespace MyBuild
                 }
                 else {  cbx_TypeEntrainement.Enabled = true;}
             }
-            
         }
 
         private void btn_RemoveTour_Click(object sender, EventArgs e)
         {
             if (numeroTour > 0)
             {
-                
                 if (lentrainement.lesTours.Count > 0)
                 {
                     Tour tour = lentrainement.lesTours[lentrainement.lesTours.Count-1];
@@ -316,26 +281,55 @@ namespace MyBuild
                     cbx_TypeEntrainement.Enabled = false;
                 }
 
-
                 if (numeroTour == 1)
                 {
                     SuppAllcbxExo();
                     numeroTour--;
                     cbx_TypeEntrainement.Enabled = true;
-                    // TODO: Afaire 
+                   
                 }
                 else { numeroTour--; }
                 
-                lbl_numeroTour.Text = Convert.ToString(numeroTour);
-                 
+                lbl_numeroTour.Text = Convert.ToString(numeroTour);   
             }
             else { cbx_TypeEntrainement.Enabled = true; }
         }
 
+        
+
+
+        #region PasUtile
+        private void cbx_nbrExercices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Entrainement_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+        
         private void gbx_Entrainement_Enter(object sender, EventArgs e)
         {
 
         }
-            
+        #endregion 
     }
 }
