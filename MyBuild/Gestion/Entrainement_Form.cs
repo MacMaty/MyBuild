@@ -226,10 +226,11 @@ namespace MyBuild
 
         private void btn_AddTour_Click(object sender, EventArgs e)
         {
-            
+            if(numeroTour<(Convert.ToInt32(cbx_nbTours.SelectedItem.ToString())))
+            {
             numeroTour++;
             lbl_numeroTour.Text = Convert.ToString(numeroTour);
-            
+            }            
         }
 
         private void btn_RemoveTour_Click(object sender, EventArgs e)
