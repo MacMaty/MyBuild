@@ -2,6 +2,21 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PublishUrl>publier\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -50,6 +65,7 @@
     <Compile Include="BO\Entrainement.cs" />
     <Compile Include="BO\Equipement.cs" />
     <Compile Include="BO\Exercice.cs" />
+    <Compile Include="BO\Tour.cs" />
     <Compile Include="BO\TypeEntrainement.cs" />
     <Compile Include="Accueil.cs">
       <SubType>Form</SubType>
@@ -67,22 +83,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsMyBuild.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Entrainement_Form.cs">
+    <Compile Include="Gestion\Entrainement_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entrainement_Form.Designer.cs">
+    <Compile Include="Gestion\Entrainement_Form.Designer.cs">
       <DependentUpon>Entrainement_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Equipement_Form.cs">
+    <Compile Include="Gestion\Equipement_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Equipement_Form.Designer.cs">
+    <Compile Include="Gestion\Equipement_Form.Designer.cs">
       <DependentUpon>Equipement_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exercice_Form.cs">
+    <Compile Include="Gestion\Exercice_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exercice_Form.Designer.cs">
+    <Compile Include="Gestion\Exercice_Form.Designer.cs">
       <DependentUpon>Exercice_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -90,13 +106,13 @@
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entrainement_Form.resx">
+    <EmbeddedResource Include="Gestion\Entrainement_Form.resx">
       <DependentUpon>Entrainement_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Equipement_Form.resx">
+    <EmbeddedResource Include="Gestion\Equipement_Form.resx">
       <DependentUpon>Equipement_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exercice_Form.resx">
+    <EmbeddedResource Include="Gestion\Exercice_Form.resx">
       <DependentUpon>Exercice_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -132,6 +148,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MesProgrammes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(VisualStudioVersion)' == ''" />

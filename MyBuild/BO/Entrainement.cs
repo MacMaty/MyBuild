@@ -12,11 +12,11 @@ namespace MyBuild.BO
         public string Nom { get; set; }
         public int Recompense { get; set; }
         public TypeEntrainement LeType { get; set; }
-        public List<Exercice> lesExos = null;
+        public List<Tour> lesTours = null;
         
         public Entrainement()
         {
-            lesExos = new List<Exercice>();
+            lesTours = new List<Tour>();
             
         }
 
