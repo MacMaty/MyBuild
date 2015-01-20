@@ -47,6 +47,7 @@
             this.btn_AddTour = new System.Windows.Forms.Button();
             this.tbx_Id = new System.Windows.Forms.TextBox();
             this.lbl_numeroTour = new System.Windows.Forms.Label();
+            this.rtxt_log = new System.Windows.Forms.RichTextBox();
             this.gbxExercices.SuspendLayout();
             this.gbx_Entrainement.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -138,7 +139,7 @@
             this.gbxExercices.Controls.Add(this.btn_AjouterExercices);
             this.gbxExercices.Location = new System.Drawing.Point(25, 64);
             this.gbxExercices.Name = "gbxExercices";
-            this.gbxExercices.Size = new System.Drawing.Size(309, 211);
+            this.gbxExercices.Size = new System.Drawing.Size(309, 260);
             this.gbxExercices.TabIndex = 10;
             this.gbxExercices.TabStop = false;
             this.gbxExercices.Text = "Exercices";
@@ -187,7 +188,7 @@
             this.gbx_Entrainement.Controls.Add(this.label1);
             this.gbx_Entrainement.Location = new System.Drawing.Point(12, 62);
             this.gbx_Entrainement.Name = "gbx_Entrainement";
-            this.gbx_Entrainement.Size = new System.Drawing.Size(721, 559);
+            this.gbx_Entrainement.Size = new System.Drawing.Size(416, 559);
             this.gbx_Entrainement.TabIndex = 11;
             this.gbx_Entrainement.TabStop = false;
             this.gbx_Entrainement.Text = "Entrainement";
@@ -243,11 +244,20 @@
             this.lbl_numeroTour.Size = new System.Drawing.Size(0, 13);
             this.lbl_numeroTour.TabIndex = 17;
             // 
+            // rtxt_log
+            // 
+            this.rtxt_log.Location = new System.Drawing.Point(465, 192);
+            this.rtxt_log.Name = "rtxt_log";
+            this.rtxt_log.Size = new System.Drawing.Size(353, 212);
+            this.rtxt_log.TabIndex = 13;
+            this.rtxt_log.Text = "";
+            // 
             // Entrainement_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 706);
+            this.Controls.Add(this.rtxt_log);
             this.Controls.Add(this.tbx_Id);
             this.Controls.Add(this.gbx_Entrainement);
             this.Controls.Add(this.btn_AjouterEntrainement);
@@ -285,5 +295,6 @@
         private System.Windows.Forms.Button btn_RemoveTour;
         private System.Windows.Forms.Button btn_AddTour;
         private System.Windows.Forms.Label lbl_numeroTour;
+        private System.Windows.Forms.RichTextBox rtxt_log;
     }
 }

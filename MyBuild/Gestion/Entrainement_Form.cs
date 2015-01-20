@@ -35,7 +35,7 @@ namespace MyBuild
         private void LoadCbxExercices(int p_nbExercices)
         {
            AddCbExo();
-           y += 20;
+           
         }
 
         private void AddCbNbFoisExo()
@@ -61,27 +61,41 @@ namespace MyBuild
 
         private void AddCbExo()
         {
-            string typeExo = cbx_TypeEntrainement.SelectedValue.ToString();
-            ComboBox cb1 = new ComboBox();
-            //cb1.Name = "cbExo" + i+1;
-            cb1.Name = "cbExo" + (nbExercices + 1);
-            gbxExercices.Controls.Add(cb1);
-            cb1.Width = 160;
-            cb1.Location = new Point(x, y);
-            LoadCbxExercices(cb1, typeExo);
-            lesExercicesCbx.Add(cb1);
-            AddCbNbFoisExo();
-            nbExercices++;
-            if (nbExercices > 0)
-            {
+            if(nbExercices<10)
+            { 
+                string typeExo = cbx_TypeEntrainement.SelectedValue.ToString();
+                ComboBox cb1 = new ComboBox();
+                cb1.Name = "cbExo" + (nbExercices + 1);
+                gbxExercices.Controls.Add(cb1);
+                cb1.Width = 160;
+                cb1.Location = new Point(x, y);
 
-                cbx_TypeEntrainement.Enabled = false;
-                btn_AjouterExercices.Visible = true;
+                LoadCbxExercices(cb1, typeExo);
+                lesExercicesCbx.Add(cb1);
+                rtxt_log.Text += "\nAJOUTER : \n";
+                foreach(ComboBox lecb in lesExercicesCbx)
+                {
+                    rtxt_log.Text += "\n"+lecb.Name.ToString();
+                }
+                AddCbNbFoisExo();
+                
+                nbExercices++;
+                y += 20;
+                if (nbExercices > 0)
+                {
+
+                    cbx_TypeEntrainement.Enabled = false;
+                    btn_AjouterExercices.Visible = true;
+                }
+                else
+                {
+                    cbx_TypeEntrainement.Enabled = true;
+                    btn_AjouterExercices.Visible = false;
+                }
             }
-            else { cbx_TypeEntrainement.Enabled = true;
-            btn_AjouterExercices.Visible = false;
             }
-        }
+            
+        
 
         private void LoadCbxExercices(ComboBox cb, string p_typeExercice)
         {
@@ -152,27 +166,28 @@ namespace MyBuild
 
         private void btn_AjouterExercices_Click(object sender, EventArgs e)
         {
-            int nbTour = Convert.ToInt32(cbx_nbTours.SelectedItem.ToString());
-            for (int i = 1; i <= nbTour; i++)
-            {
-                Tour leTour = new Tour();
-                leTour.numeroTour = nbTour;
-                for (int p = 0; i < nbExercices; i++)
+                    
+
+          
+                for (int p = 0; p < nbExercices; p++)
                 {
                     ComboBox laComboExercice = lesExercicesCbx[p];
                     ComboBox laComboNbtour = lesnbExericicesCbx[p];
                     Exercice lexercices = new Exercice();
-                    List<Exercice> lesExercice = new List<Exercice>();
                     lexercices.Id = laComboExercice.SelectedValue.ToString();
                     lexercices.Nom = laComboExercice.Text;
                     lexercices.LeType = new TypeEntrainement { Id = cbx_TypeEntrainement.SelectedValue.ToString().Trim(), Nom = cbx_TypeEntrainement.Text.Trim() };
                     lexercices.leNbdeFois = Convert.ToInt32(laComboNbtour.SelectedItem.ToString());
 
-                    leTour.lesExercices.Add(lexercices);
-
+                    lentrainement.lesTours[numeroTour-1].lesExercices.Add(lexercices);
+                   
                 }
-                lentrainement.lesTours.Add(leTour);
-            }
+                rtxt_log.Text += "\n Tour numero : " + lentrainement.lesTours[numeroTour - 1].numeroTour;
+                foreach (Exercice lexo in lentrainement.lesTours[numeroTour-1].lesExercices)
+                {
+                    rtxt_log.Text += "\n" + lexo.leNbdeFois.ToString() + " x " + lexo.Nom.ToString();
+                }
+            
         }
 
         private void cbx_nbrExercices_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,13 +200,16 @@ namespace MyBuild
         private void btn_AddExo_Click(object sender, EventArgs e)
         {
             if (numeroTour > 0)
-            { LoadCbxExercices(nbExercices); }
+            { LoadCbxExercices(nbExercices);
+            rtxt_log.Text += "\n NOMBRE cbExo : "+lesExercicesCbx.Count.ToString();
+            }
             else { MessageBox.Show("Il faut ajouter un Tour avant un Exercice"); }
         }
 
         private void btn_RemoveExo_Click(object sender, EventArgs e)
         {
-            
+            if(numeroTour>0)
+            { 
             
             SuppCbxExo();
             if (nbExercices > 0)
@@ -202,6 +220,7 @@ namespace MyBuild
             else { cbx_TypeEntrainement.Enabled = true;
             btn_AjouterExercices.Visible = false;
             }
+            }
         }
 
         private void SuppCbxExo()
@@ -211,40 +230,106 @@ namespace MyBuild
                 {
                     if (nbExercices >= 1)
                     {
-                        if(lentrainement.lesTours.Count>0)
-                        { lentrainement.lesTours.RemoveAt(nbExercices - 1); }                        
-                        gbxExercices.Controls.Remove(lesExercicesCbx[nbExercices-1]);
-                        gbxExercices.Controls.Remove(lesnbExericicesCbx[nbExercices-1]);
-                        lesnbExericicesCbx.RemoveAt(nbExercices - 1);
-                        lesExercicesCbx.RemoveAt(nbExercices - 1);
+                        /*if(lentrainement.lesTours.Count>0)
+                        { lentrainement.lesTours.RemoveAt(nbExercices - 1); }   */
+                        ComboBox lexoSup = lesExercicesCbx.First(a => a.Name == "cbExo" + nbExercices);
+                        /*ComboBox lexoSup = lesExercicesCbx.Find(delegate(ComboBox match)
+                        { return (match.Name == "cbExo" + nbExercices); });*/
+
+                        ComboBox lnbSup = lesnbExericicesCbx.First(a => a.Name == "cbNbExo" + nbExercices);
+
+                        /*ComboBox lnbSup = lesnbExericicesCbx.Find(delegate(ComboBox match)
+                        { return (match.Name == "cbNbExo" + nbExercices); });*/
+                        //ComboBox lexoSup = lesExercicesCbx[nbExercices - 1];
+                        //ComboBox lnbSup = lesnbExericicesCbx[nbExercices - 1];
+
+                        gbxExercices.Controls.Remove(lexoSup);
+                        lesExercicesCbx.Remove(lexoSup);
+
+                        gbxExercices.Controls.Remove(lnbSup);
+                        lesnbExericicesCbx.Remove(lnbSup);
+                        
                         y -= 20;
                         nbExercices--;
                     }
 
                 }
             }
+        private void SuppAllcbxExo()
+        {
+            if (y >= 50)
+            {
+                if (nbExercices >= 1)
+                {
+                    if (lentrainement.lesTours.Count == 0)
+                    {                
+                        foreach(ComboBox lexo in lesExercicesCbx)
+                        {
+                            gbxExercices.Controls.Remove(lexo);
+                            nbExercices--;
+                        }
+                        foreach(ComboBox lnbExo in lesnbExericicesCbx)
+                        {
+                            gbxExercices.Controls.Remove(lnbExo);
+                        }
+
+                    }
+                    btn_AjouterExercices.Visible = false;
+                }
+                    lesExercicesCbx.RemoveRange(0,lesExercicesCbx.Count);
+                    lesnbExericicesCbx.RemoveRange(0, lesnbExericicesCbx.Count); ;
+                
+
+
+                    y = 50;
+                
+                nbExercices = 0;
+            }
+        }
 
         private void btn_AddTour_Click(object sender, EventArgs e)
         {
-            if(numeroTour<(Convert.ToInt32(cbx_nbTours.SelectedItem.ToString())))
+            if (cbx_nbTours.SelectedItem != null)
             {
-            numeroTour++;
-            lbl_numeroTour.Text = Convert.ToString(numeroTour);
-            }            
+                if (numeroTour < (Convert.ToInt32(cbx_nbTours.SelectedItem.ToString())))
+                {
+                    numeroTour++;
+                    lbl_numeroTour.Text = Convert.ToString(numeroTour);
+                    cbx_TypeEntrainement.Enabled = false;
+                    Tour leTour = new Tour{numeroTour=this.numeroTour};
+                    lentrainement.lesTours.Add(leTour);
+                }
+                else {  cbx_TypeEntrainement.Enabled = true;}
+            }
+            
         }
 
         private void btn_RemoveTour_Click(object sender, EventArgs e)
         {
             if (numeroTour > 0)
             {
+                
                 if (lentrainement.lesTours.Count > 0)
                 {
-                    Tour tour = lentrainement.lesTours[numeroTour + 1];
+                    Tour tour = lentrainement.lesTours[lentrainement.lesTours.Count-1];
                     lentrainement.lesTours.Remove(tour);
+                    cbx_TypeEntrainement.Enabled = false;
                 }
-                numeroTour--;
+
+
+                if (numeroTour == 1)
+                {
+                    SuppAllcbxExo();
+                    numeroTour--;
+                    cbx_TypeEntrainement.Enabled = true;
+                    // TODO: Afaire 
+                }
+                else { numeroTour--; }
+                
                 lbl_numeroTour.Text = Convert.ToString(numeroTour);
+                 
             }
+            else { cbx_TypeEntrainement.Enabled = true; }
         }
 
         private void gbx_Entrainement_Enter(object sender, EventArgs e)
