@@ -42,9 +42,14 @@
             this.btn_AddExo = new System.Windows.Forms.Button();
             this.btn_AjouterExercices = new System.Windows.Forms.Button();
             this.gbx_Entrainement = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_RemoveTour = new System.Windows.Forms.Button();
+            this.btn_AddTour = new System.Windows.Forms.Button();
             this.tbx_Id = new System.Windows.Forms.TextBox();
+            this.lbl_numeroTour = new System.Windows.Forms.Label();
             this.gbxExercices.SuspendLayout();
             this.gbx_Entrainement.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_AjouterEntrainement
@@ -131,7 +136,7 @@
             this.gbxExercices.Controls.Add(this.btn_RemoveExo);
             this.gbxExercices.Controls.Add(this.btn_AddExo);
             this.gbxExercices.Controls.Add(this.btn_AjouterExercices);
-            this.gbxExercices.Location = new System.Drawing.Point(10, 129);
+            this.gbxExercices.Location = new System.Drawing.Point(25, 64);
             this.gbxExercices.Name = "gbxExercices";
             this.gbxExercices.Size = new System.Drawing.Size(309, 211);
             this.gbxExercices.TabIndex = 10;
@@ -166,12 +171,13 @@
             this.btn_AjouterExercices.TabIndex = 12;
             this.btn_AjouterExercices.Text = "Ajouter";
             this.btn_AjouterExercices.UseVisualStyleBackColor = true;
+            this.btn_AjouterExercices.Visible = false;
             this.btn_AjouterExercices.Click += new System.EventHandler(this.btn_AjouterExercices_Click);
             // 
             // gbx_Entrainement
             // 
+            this.gbx_Entrainement.Controls.Add(this.groupBox1);
             this.gbx_Entrainement.Controls.Add(this.textBox1);
-            this.gbx_Entrainement.Controls.Add(this.gbxExercices);
             this.gbx_Entrainement.Controls.Add(this.lbl_NomEntrainement);
             this.gbx_Entrainement.Controls.Add(this.label3);
             this.gbx_Entrainement.Controls.Add(this.label2);
@@ -181,11 +187,45 @@
             this.gbx_Entrainement.Controls.Add(this.label1);
             this.gbx_Entrainement.Location = new System.Drawing.Point(12, 62);
             this.gbx_Entrainement.Name = "gbx_Entrainement";
-            this.gbx_Entrainement.Size = new System.Drawing.Size(339, 370);
+            this.gbx_Entrainement.Size = new System.Drawing.Size(721, 559);
             this.gbx_Entrainement.TabIndex = 11;
             this.gbx_Entrainement.TabStop = false;
             this.gbx_Entrainement.Text = "Entrainement";
             this.gbx_Entrainement.Visible = false;
+            this.gbx_Entrainement.Enter += new System.EventHandler(this.gbx_Entrainement_Enter);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lbl_numeroTour);
+            this.groupBox1.Controls.Add(this.btn_RemoveTour);
+            this.groupBox1.Controls.Add(this.gbxExercices);
+            this.groupBox1.Controls.Add(this.btn_AddTour);
+            this.groupBox1.Location = new System.Drawing.Point(19, 151);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(355, 341);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tour";
+            // 
+            // btn_RemoveTour
+            // 
+            this.btn_RemoveTour.Location = new System.Drawing.Point(76, 19);
+            this.btn_RemoveTour.Name = "btn_RemoveTour";
+            this.btn_RemoveTour.Size = new System.Drawing.Size(26, 23);
+            this.btn_RemoveTour.TabIndex = 16;
+            this.btn_RemoveTour.Text = "-";
+            this.btn_RemoveTour.UseVisualStyleBackColor = true;
+            this.btn_RemoveTour.Click += new System.EventHandler(this.btn_RemoveTour_Click);
+            // 
+            // btn_AddTour
+            // 
+            this.btn_AddTour.Location = new System.Drawing.Point(44, 19);
+            this.btn_AddTour.Name = "btn_AddTour";
+            this.btn_AddTour.Size = new System.Drawing.Size(26, 23);
+            this.btn_AddTour.TabIndex = 15;
+            this.btn_AddTour.Text = "+";
+            this.btn_AddTour.UseVisualStyleBackColor = true;
+            this.btn_AddTour.Click += new System.EventHandler(this.btn_AddTour_Click);
             // 
             // tbx_Id
             // 
@@ -195,11 +235,19 @@
             this.tbx_Id.TabIndex = 12;
             this.tbx_Id.Visible = false;
             // 
+            // lbl_numeroTour
+            // 
+            this.lbl_numeroTour.AutoSize = true;
+            this.lbl_numeroTour.Location = new System.Drawing.Point(114, 28);
+            this.lbl_numeroTour.Name = "lbl_numeroTour";
+            this.lbl_numeroTour.Size = new System.Drawing.Size(0, 13);
+            this.lbl_numeroTour.TabIndex = 17;
+            // 
             // Entrainement_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 486);
+            this.ClientSize = new System.Drawing.Size(845, 706);
             this.Controls.Add(this.tbx_Id);
             this.Controls.Add(this.gbx_Entrainement);
             this.Controls.Add(this.btn_AjouterEntrainement);
@@ -209,6 +257,8 @@
             this.gbxExercices.ResumeLayout(false);
             this.gbx_Entrainement.ResumeLayout(false);
             this.gbx_Entrainement.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +281,9 @@
         private System.Windows.Forms.TextBox tbx_Id;
         private System.Windows.Forms.Button btn_AddExo;
         private System.Windows.Forms.Button btn_RemoveExo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_RemoveTour;
+        private System.Windows.Forms.Button btn_AddTour;
+        private System.Windows.Forms.Label lbl_numeroTour;
     }
 }

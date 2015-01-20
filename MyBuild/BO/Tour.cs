@@ -8,7 +8,7 @@ namespace MyBuild.BO
 {
     public class Tour
     {
-        public string numeroTour { get; set; }
+        public int numeroTour { get; set; }
         public List<Exercice> lesExercices {get;set;}
         public Tour()
         {

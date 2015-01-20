@@ -14,6 +14,7 @@ namespace MyBuild
     public partial class Entrainement_Form : Form
     {
         Entrainement lentrainement = new Entrainement();
+        int numeroTour = 0;
         private int nbExercices = 0;
         int x = 20, y = 50;
         List<ComboBox> lesExercicesCbx = null;
@@ -28,15 +29,12 @@ namespace MyBuild
             LoadCbxNbTours();
             lesExercicesCbx = new List<ComboBox>();
             lesnbExericicesCbx = new List<ComboBox>();
-            
-            
+  
         }
 
         private void LoadCbxExercices(int p_nbExercices)
         {
            AddCbExo();
-           
-
            y += 20;
         }
 
@@ -44,7 +42,6 @@ namespace MyBuild
         {
             string typeExo = cbx_TypeEntrainement.SelectedValue.ToString();
             ComboBox cb1 = new ComboBox();
-            //cb1.Name = "cbExo" + i+1;
             cb1.Name = "cbNbExo" + (nbExercices + 1);
             gbxExercices.Controls.Add(cb1);
             cb1.Width = 40;
@@ -79,8 +76,11 @@ namespace MyBuild
             {
 
                 cbx_TypeEntrainement.Enabled = false;
+                btn_AjouterExercices.Visible = true;
             }
-            else { cbx_TypeEntrainement.Enabled = true; }
+            else { cbx_TypeEntrainement.Enabled = true;
+            btn_AjouterExercices.Visible = false;
+            }
         }
 
         private void LoadCbxExercices(ComboBox cb, string p_typeExercice)
@@ -153,10 +153,10 @@ namespace MyBuild
         private void btn_AjouterExercices_Click(object sender, EventArgs e)
         {
             int nbTour = Convert.ToInt32(cbx_nbTours.SelectedItem.ToString());
-            for (int i = 0; i < nbTour; i++)
+            for (int i = 1; i <= nbTour; i++)
             {
                 Tour leTour = new Tour();
-
+                leTour.numeroTour = nbTour;
                 for (int p = 0; i < nbExercices; i++)
                 {
                     ComboBox laComboExercice = lesExercicesCbx[p];
@@ -184,9 +184,9 @@ namespace MyBuild
 
         private void btn_AddExo_Click(object sender, EventArgs e)
         {
-
-                LoadCbxExercices(nbExercices);
-
+            if (numeroTour > 0)
+            { LoadCbxExercices(nbExercices); }
+            else { MessageBox.Show("Il faut ajouter un Tour avant un Exercice"); }
         }
 
         private void btn_RemoveExo_Click(object sender, EventArgs e)
@@ -199,7 +199,9 @@ namespace MyBuild
 
                 cbx_TypeEntrainement.Enabled = false;
             }
-            else { cbx_TypeEntrainement.Enabled = true; }
+            else { cbx_TypeEntrainement.Enabled = true;
+            btn_AjouterExercices.Visible = false;
+            }
         }
 
         private void SuppCbxExo()
@@ -221,6 +223,33 @@ namespace MyBuild
 
                 }
             }
+
+        private void btn_AddTour_Click(object sender, EventArgs e)
+        {
+            
+            numeroTour++;
+            lbl_numeroTour.Text = Convert.ToString(numeroTour);
+            
+        }
+
+        private void btn_RemoveTour_Click(object sender, EventArgs e)
+        {
+            if (numeroTour > 0)
+            {
+                if (lentrainement.lesTours.Count > 0)
+                {
+                    Tour tour = lentrainement.lesTours[numeroTour + 1];
+                    lentrainement.lesTours.Remove(tour);
+                }
+                numeroTour--;
+                lbl_numeroTour.Text = Convert.ToString(numeroTour);
+            }
+        }
+
+        private void gbx_Entrainement_Enter(object sender, EventArgs e)
+        {
+
+        }
             
     }
 }
