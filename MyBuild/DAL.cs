@@ -198,6 +198,8 @@ namespace MyBuild
                 cmd.Parameters.Add("@recompense", SqlDbType.Int).Value = lexercice.Recompense;
                 cmd.Parameters.Add("@idEquipement", SqlDbType.NVarChar).Value = lexercice.lEquipement.Id.Trim();
                 cmd.Parameters.Add("@idTypeEntrainement", SqlDbType.NVarChar).Value = lexercice.LeType.Id.Trim();
+                cmd.Parameters.Add("@imgPath", SqlDbType.VarChar).Value = lexercice.imagePath.Trim();
+                //cmd.Parameters.Add("@image", SqlDbType.Binary).Value = Convert.ToByte(lexercice.image);
                 cmd.ExecuteNonQuery();
 
             }

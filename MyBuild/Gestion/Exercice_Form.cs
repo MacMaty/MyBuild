@@ -30,12 +30,15 @@ namespace MyBuild
                 lexercice.Recompense = Convert.ToInt32(txt_Recompense.Text);
                 lexercice.lEquipement = new Equipement { Id = cbx_IdEquipement.SelectedValue.ToString() };
                 lexercice.LeType = new TypeEntrainement { Id = cbx_IdTypeEntrainement.SelectedValue.ToString() };
+                lexercice.imagePath = imgPathLabel1.Text;
+                lexercice.image = imgPictureBox.Image;
 
                 DAL.Instance.AjouterExercice(lexercice);
 
                 txt_IdExercice.Clear();
                 txt_NomExercice.Clear();
                 txt_Recompense.Clear();
+                imgPictureBox.Image = null;
             }
             else
             {
@@ -63,6 +66,21 @@ namespace MyBuild
         }
 
         private void Exercice_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_AddImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OpenFL = new OpenFileDialog();
+            OpenFL.Filter = "Images only. |*.jpeg; *.jpg; *.png; *.gif;";
+            DialogResult dr = OpenFL.ShowDialog();
+
+            imgPictureBox.Image = Image.FromFile(OpenFL.FileName);
+            imgPathLabel1.Text = OpenFL.FileName;
+        }
+
+        private void imgPictureBox_Click(object sender, EventArgs e)
         {
 
         }

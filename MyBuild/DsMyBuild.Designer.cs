@@ -881,6 +881,10 @@ namespace MyBuild {
             
             private global::System.Data.DataColumn columnNomEquipement;
             
+            private global::System.Data.DataColumn columnimgPath;
+            
+            private global::System.Data.DataColumn columnImg;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TableExerciceDataTable() {
@@ -956,6 +960,22 @@ namespace MyBuild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn imgPathColumn {
+                get {
+                    return this.columnimgPath;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ImgColumn {
+                get {
+                    return this.columnImg;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -991,14 +1011,16 @@ namespace MyBuild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TableExerciceRow AddTableExerciceRow(string Id, string Nom, string Recompense, string idEquipement, string NomEquipement) {
+            public TableExerciceRow AddTableExerciceRow(string Id, string Nom, string Recompense, string idEquipement, string NomEquipement, string imgPath, byte[] Img) {
                 TableExerciceRow rowTableExerciceRow = ((TableExerciceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
                         Nom,
                         Recompense,
                         idEquipement,
-                        NomEquipement};
+                        NomEquipement,
+                        imgPath,
+                        Img};
                 rowTableExerciceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTableExerciceRow);
                 return rowTableExerciceRow;
@@ -1026,6 +1048,8 @@ namespace MyBuild {
                 this.columnRecompense = base.Columns["Recompense"];
                 this.columnidEquipement = base.Columns["idEquipement"];
                 this.columnNomEquipement = base.Columns["NomEquipement"];
+                this.columnimgPath = base.Columns["imgPath"];
+                this.columnImg = base.Columns["Img"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1041,6 +1065,10 @@ namespace MyBuild {
                 base.Columns.Add(this.columnidEquipement);
                 this.columnNomEquipement = new global::System.Data.DataColumn("NomEquipement", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNomEquipement);
+                this.columnimgPath = new global::System.Data.DataColumn("imgPath", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimgPath);
+                this.columnImg = new global::System.Data.DataColumn("Img", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImg);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1408,6 +1436,38 @@ namespace MyBuild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string imgPath {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableExercice.imgPathColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'imgPath\' dans la table \'TableExercice\' est DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableExercice.imgPathColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] Img {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableTableExercice.ImgColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Img\' dans la table \'TableExercice\' est DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableExercice.ImgColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tableTableExercice.IdColumn);
             }
@@ -1464,6 +1524,30 @@ namespace MyBuild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNomEquipementNull() {
                 this[this.tableTableExercice.NomEquipementColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsimgPathNull() {
+                return this.IsNull(this.tableTableExercice.imgPathColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetimgPathNull() {
+                this[this.tableTableExercice.imgPathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsImgNull() {
+                return this.IsNull(this.tableTableExercice.ImgColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetImgNull() {
+                this[this.tableTableExercice.ImgColumn] = global::System.Convert.DBNull;
             }
         }
         
