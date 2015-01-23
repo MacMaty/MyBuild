@@ -346,5 +346,20 @@ namespace MyBuild
 
         }
         #endregion 
+
+        private void btn_ValiderEntrainement_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lentrainement.Id = tbx_Id.Text;
+                lentrainement.Nom = txt_NomEntrainement.Text;
+                lentrainement.NbTour = Convert.ToInt32(cbx_nbTours.SelectedItem.ToString());
+                DAL.Instance.AjouterEntrainementDB(lentrainement);
+            }
+            catch (Exception ex)
+            {
+ 
+            }
+        }
     }
 }

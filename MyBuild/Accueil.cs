@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBuild.MesProgrammes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,6 +46,13 @@ namespace MyBuild
         {
             Equipement_Form ef = new Equipement_Form();
             ef.Show();
+        }
+
+        private void btn_programme_Click(object sender, EventArgs e)
+        {
+            VoirProgramme_Form vp = new VoirProgramme_Form();
+            vp.Show();
+
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_AjouterEntrainement = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_NomEntrainement = new System.Windows.Forms.TextBox();
             this.lbl_NomEntrainement = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbx_nbTours = new System.Windows.Forms.ComboBox();
@@ -43,11 +43,12 @@
             this.btn_AjouterExercices = new System.Windows.Forms.Button();
             this.gbx_Entrainement = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_numeroTour = new System.Windows.Forms.Label();
             this.btn_RemoveTour = new System.Windows.Forms.Button();
             this.btn_AddTour = new System.Windows.Forms.Button();
             this.tbx_Id = new System.Windows.Forms.TextBox();
-            this.lbl_numeroTour = new System.Windows.Forms.Label();
             this.rtxt_log = new System.Windows.Forms.RichTextBox();
+            this.btn_ValiderEntrainement = new System.Windows.Forms.Button();
             this.gbxExercices.SuspendLayout();
             this.gbx_Entrainement.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,13 +64,13 @@
             this.btn_AjouterEntrainement.UseVisualStyleBackColor = true;
             this.btn_AjouterEntrainement.Click += new System.EventHandler(this.btn_AjouterEntrainement_Click);
             // 
-            // textBox1
+            // txt_NomEntrainement
             // 
-            this.textBox1.Location = new System.Drawing.Point(133, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txt_NomEntrainement.Location = new System.Drawing.Point(133, 19);
+            this.txt_NomEntrainement.Name = "txt_NomEntrainement";
+            this.txt_NomEntrainement.Size = new System.Drawing.Size(134, 20);
+            this.txt_NomEntrainement.TabIndex = 1;
+            this.txt_NomEntrainement.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lbl_NomEntrainement
             // 
@@ -177,8 +178,9 @@
             // 
             // gbx_Entrainement
             // 
+            this.gbx_Entrainement.Controls.Add(this.btn_ValiderEntrainement);
             this.gbx_Entrainement.Controls.Add(this.groupBox1);
-            this.gbx_Entrainement.Controls.Add(this.textBox1);
+            this.gbx_Entrainement.Controls.Add(this.txt_NomEntrainement);
             this.gbx_Entrainement.Controls.Add(this.lbl_NomEntrainement);
             this.gbx_Entrainement.Controls.Add(this.label3);
             this.gbx_Entrainement.Controls.Add(this.label2);
@@ -208,6 +210,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tour";
             // 
+            // lbl_numeroTour
+            // 
+            this.lbl_numeroTour.AutoSize = true;
+            this.lbl_numeroTour.Location = new System.Drawing.Point(114, 28);
+            this.lbl_numeroTour.Name = "lbl_numeroTour";
+            this.lbl_numeroTour.Size = new System.Drawing.Size(0, 13);
+            this.lbl_numeroTour.TabIndex = 17;
+            // 
             // btn_RemoveTour
             // 
             this.btn_RemoveTour.Location = new System.Drawing.Point(76, 19);
@@ -236,14 +246,6 @@
             this.tbx_Id.TabIndex = 12;
             this.tbx_Id.Visible = false;
             // 
-            // lbl_numeroTour
-            // 
-            this.lbl_numeroTour.AutoSize = true;
-            this.lbl_numeroTour.Location = new System.Drawing.Point(114, 28);
-            this.lbl_numeroTour.Name = "lbl_numeroTour";
-            this.lbl_numeroTour.Size = new System.Drawing.Size(0, 13);
-            this.lbl_numeroTour.TabIndex = 17;
-            // 
             // rtxt_log
             // 
             this.rtxt_log.Location = new System.Drawing.Point(465, 192);
@@ -251,6 +253,16 @@
             this.rtxt_log.Size = new System.Drawing.Size(353, 212);
             this.rtxt_log.TabIndex = 13;
             this.rtxt_log.Text = "";
+            // 
+            // btn_ValiderEntrainement
+            // 
+            this.btn_ValiderEntrainement.Location = new System.Drawing.Point(298, 528);
+            this.btn_ValiderEntrainement.Name = "btn_ValiderEntrainement";
+            this.btn_ValiderEntrainement.Size = new System.Drawing.Size(75, 23);
+            this.btn_ValiderEntrainement.TabIndex = 12;
+            this.btn_ValiderEntrainement.Text = "Valider";
+            this.btn_ValiderEntrainement.UseVisualStyleBackColor = true;
+            this.btn_ValiderEntrainement.Click += new System.EventHandler(this.btn_ValiderEntrainement_Click);
             // 
             // Entrainement_Form
             // 
@@ -277,7 +289,7 @@
         #endregion
 
         private System.Windows.Forms.Button btn_AjouterEntrainement;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_NomEntrainement;
         private System.Windows.Forms.Label lbl_NomEntrainement;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbx_nbTours;
@@ -296,5 +308,6 @@
         private System.Windows.Forms.Button btn_AddTour;
         private System.Windows.Forms.Label lbl_numeroTour;
         private System.Windows.Forms.RichTextBox rtxt_log;
+        private System.Windows.Forms.Button btn_ValiderEntrainement;
     }
 }

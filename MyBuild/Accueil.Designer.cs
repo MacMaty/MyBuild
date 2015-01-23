@@ -54,6 +54,7 @@
             this.btn_programme.TabIndex = 1;
             this.btn_programme.Text = "Mes Programmes";
             this.btn_programme.UseVisualStyleBackColor = true;
+            this.btn_programme.Click += new System.EventHandler(this.btn_programme_Click);
             // 
             // button3
             // 
@@ -109,7 +110,7 @@
             this.Controls.Add(this.btn_programme);
             this.Controls.Add(this.btn_Gestion);
             this.Name = "Accueil";
-            this.Text = "Form1";
+            this.Text = "MyBuild";
             this.Load += new System.EventHandler(this.Accueil_Load);
             this.ResumeLayout(false);
 

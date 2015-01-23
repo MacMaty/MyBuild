@@ -89,22 +89,9 @@ namespace MyBuild
            }
            rdr.Close();
            cnx.Close();
-           Exercice l_Activite = new Exercice();
-           l_Activite.Id = "pup";
-           l_Activite.Nom = "Pushups";
-           list_Exercice.Add(l_Activite);
-           l_Activite = new Exercice();
-           l_Activite.Id = "stip";
-           l_Activite.Nom = "Situps";
-           list_Exercice.Add(l_Activite);
-           l_Activite = new Exercice();
-           l_Activite.Id = "sqt";
-           l_Activite.Nom = "Squats";
-           list_Exercice.Add(l_Activite);
-           
-
-
-           return list_Exercice;*/
+          
+*/
+        
        }
 
         public void AjouterExoEntrainement(string IdEntrainement,string idExercice, int nbfoisExercice)
@@ -212,6 +199,109 @@ namespace MyBuild
 
                 cnx.Close();
             }
+        }
+
+        internal void AjouterEntrainementDB(Entrainement lentrainement)
+        {
+            cnx.Open();
+            SqlTransaction sqlT = cnx.BeginTransaction("SampleTransaction");
+            try
+            {
+            
+            SqlCommand cmd = new SqlCommand("dbo.AjouterEntrainement", cnx);
+            cmd.Transaction = sqlT;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@idEntrainement", SqlDbType.NVarChar).Value = lentrainement.Id.Trim();
+            cmd.Parameters.Add("@nomEntrainement", SqlDbType.NVarChar).Value = lentrainement.Nom.Trim();
+            cmd.Parameters.Add("@nbTour", SqlDbType.Int).Value = lentrainement.NbTour;
+            cmd.ExecuteNonQuery();
+
+            foreach (var leTour in lentrainement.lesTours)
+            {
+                foreach (var Lexercice in leTour.lesExercices)
+                {
+                    cmd = new SqlCommand("dbo.AjouterTour", cnx);
+                    cmd.Transaction = sqlT;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@idEntrainement", SqlDbType.NVarChar).Value = lentrainement.Id.Trim();
+                    cmd.Parameters.Add("@idExercice", SqlDbType.NVarChar).Value = Lexercice.Id;
+                    cmd.Parameters.Add("@numeroTour", SqlDbType.NVarChar).Value = leTour.numeroTour;
+                    cmd.ExecuteNonQuery();
+                    
+                }
+            }
+            sqlT.Commit();
+             }
+            catch (Exception ex)
+            {
+                sqlT.Rollback();
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+                cnx.Close();
+            }
+
+        }
+
+        internal List<Entrainement> RecupEntrainementDB()
+        {
+            
+            Entrainement lesEntrainements = new Entrainement();
+            SqlCommand cmd = new SqlCommand("dbo.RecupEntrainement", cnx);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+
+            // Remplir le DataSet
+            DsMyBuild DsDataMyBuild = new DsMyBuild();
+            adapter.Fill(DsDataMyBuild, DsDataMyBuild.TableEntrainement.TableName);
+            var myData = DsDataMyBuild.Tables["TableEntrainement"].AsEnumerable().Select(dataRow => new Entrainement
+            {
+                Id = dataRow.Field<string>("Id").Trim(),
+                Nom = dataRow.Field<string>("Nom").Trim(),
+                NbTour =Convert.ToInt32(dataRow.Field<string>("NbTour"))
+
+            });
+            var list = myData.ToList();
+            return list;    
+        }
+
+       
+
+        internal List<Tour> RecupExerciceParTour(string p_idEntrainement, int p_nbTour)
+        {
+            List<Tour> lesTours = new List<Tour>();
+            for (int i = 1; i <= p_nbTour; i++)
+            {
+                Tour leTour = new Tour { numeroTour = i };
+                SqlCommand cmd = new SqlCommand("dbo.RecupExerciceParTour", cnx);
+                cmd.CommandType = CommandType.StoredProcedure;
+                //SqlParameter sqlParam = new SqlParameter("@typeExercice", p_typeExercice);
+                cmd.Parameters.Add("@idEntrainement", SqlDbType.NVarChar).Value = p_idEntrainement;
+                cmd.Parameters.Add("@numeroTour", SqlDbType.Int).Value = i;
+
+              SqlDataReader rdr = cmd.ExecuteReader();
+
+           List<Exercice> list_Exercice = new List<Exercice>();
+           while(rdr.Read())
+           {
+               Exercice l_exercice = new Exercice();
+               l_exercice.Id = rdr["idExercice"].ToString().Trim();
+               l_exercice.Nom = rdr["Nom"].ToString().Trim();
+               l_exercice.Recompense = Convert.ToInt32(rdr["Recompense"].ToString().Trim());
+               l_exercice.imagePath = rdr["imgPath"].ToString().Trim();
+
+               list_Exercice.Add(l_exercice);
+           }
+           rdr.Close();
+           leTour.lesExercices = list_Exercice;
+
+           lesTours.Add(leTour);
+     
+            }
+            cnx.Close();
+            return lesTours;  
         }
     }
 }

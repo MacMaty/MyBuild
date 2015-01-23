@@ -11,6 +11,7 @@ namespace MyBuild.BO
         public string Id { get; set; }
         public string Nom { get; set; }
         public int Recompense { get; set; }
+        public int NbTour { get; set; }
         public TypeEntrainement LeType { get; set; }
         public List<Tour> lesTours = null;
         
