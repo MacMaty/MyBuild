@@ -13,16 +13,18 @@ namespace MyBuild.MesProgrammes
 {
     public partial class VoirProgramme_Form : Form
     {
+        int x = 600, y = 110;
+        List<PictureBox> lesPicturesBox = new List<PictureBox>();
         public VoirProgramme_Form()
         {
             InitializeComponent();
+            
             RecupeEntrainement();
         }
 
         private void VoirProgramme_Load(object sender, EventArgs e)
         {
-            Image image = Image.FromFile(@"C:\Users\m_boyer\Desktop\ImageEntrainement\jumping-jacks-133x75.jpg");
-            pictureBox1.Image = image;
+            
         }
 
         private void RecupeEntrainement()
@@ -40,11 +42,22 @@ namespace MyBuild.MesProgrammes
         {
             if (lbx_Entrainement.SelectedIndex != -1)
             {
+                SuppPictureBox();
+                Entrainement lentrainement = (Entrainement)lbx_Entrainement.SelectedItem;
                 List<Entrainement> lesEntrainements = DAL.Instance.RecupEntrainementDB();
-                Entrainement entrain = lesEntrainements.Find(c => c.Id == lbx_Entrainement.SelectedValue.ToString());
+                Entrainement entrain = lesEntrainements.Find(c => c.Id == lentrainement.Id);
 
                 AfficherTour(entrain);
             }
+        }
+
+        private void SuppPictureBox()
+        {
+            foreach (var lapicture in lesPicturesBox)
+            {
+                this.Controls.Remove(lapicture);
+            }
+            x = 600; y = 110;
         }
 
         private void AfficherTour(Entrainement p_entrainement)
@@ -55,8 +68,26 @@ namespace MyBuild.MesProgrammes
                   foreach (Exercice lExercice in leTour.lesExercices)
                   {
                       
+                      PictureBox laPicturebox = new PictureBox();
+                      laPicturebox.Width =100;
+                      laPicturebox.Height =75 ;
 
+                      
+                      laPicturebox.Location = new Point(x,y);
+                      Image image = Image.FromFile(lExercice.imagePath.Replace(@"\\", @"\"));
+                      laPicturebox.Image = image;
+                      this.Controls.Add(laPicturebox);
+                      lesPicturesBox.Add(laPicturebox);
+
+                      y += 100;
+                      
+
+
+                     
+                      
                   }
+                  y = 110;
+                  x += 100;
               }
             
 

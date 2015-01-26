@@ -13,8 +13,8 @@ namespace MyBuild
     {
        List<Equipement> lesEquipement = new List<Equipement>();
        private static DAL instance;
-       //const string cnxString = @"Data Source =TOSHIBA-MAT\BASEPCMATHIEU; Initial Catalog=MyBuild;Integrated Security=SSPI";
-       const string cnxString = @"Data Source =B2V-CZC3306VZC\SQLEXPRESS; Initial Catalog=MyBuild;Integrated Security=SSPI";
+       const string cnxString = @"Data Source =TOSHIBA-MAT\BASEPCMATHIEU; Initial Catalog=MyBuild;Integrated Security=SSPI";
+       //const string cnxString = @"Data Source =B2V-CZC3306VZC\SQLEXPRESS; Initial Catalog=MyBuild;Integrated Security=SSPI";
        SqlConnection cnx = null;
        public DAL() {
            cnx = new SqlConnection(cnxString);
@@ -260,7 +260,7 @@ namespace MyBuild
             {
                 Id = dataRow.Field<string>("Id").Trim(),
                 Nom = dataRow.Field<string>("Nom").Trim(),
-                NbTour =Convert.ToInt32(dataRow.Field<string>("NbTour"))
+                NbTour =dataRow.Field<int>("NbTour")
 
             });
             var list = myData.ToList();
@@ -271,6 +271,7 @@ namespace MyBuild
 
         internal List<Tour> RecupExerciceParTour(string p_idEntrainement, int p_nbTour)
         {
+            cnx.Open();
             List<Tour> lesTours = new List<Tour>();
             for (int i = 1; i <= p_nbTour; i++)
             {
@@ -290,7 +291,7 @@ namespace MyBuild
                l_exercice.Id = rdr["idExercice"].ToString().Trim();
                l_exercice.Nom = rdr["Nom"].ToString().Trim();
                l_exercice.Recompense = Convert.ToInt32(rdr["Recompense"].ToString().Trim());
-               l_exercice.imagePath = rdr["imgPath"].ToString().Trim();
+               l_exercice.imagePath = rdr["imgPath"].ToString().Trim() ;
 
                list_Exercice.Add(l_exercice);
            }

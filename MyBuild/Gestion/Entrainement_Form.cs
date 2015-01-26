@@ -189,7 +189,7 @@ namespace MyBuild
             if(numeroTour>0)
             { 
             
-            SuppCbxExo();
+            SuppUneCbxExo();
             if (nbExercices > 0)
             {
                 cbx_TypeEntrainement.Enabled = false;
@@ -200,7 +200,7 @@ namespace MyBuild
             }
         }
 
-        private void SuppCbxExo()
+        private void SuppUneCbxExo()
         {
                 if (y >= 50)
                 {
@@ -239,17 +239,8 @@ namespace MyBuild
                 if (nbExercices >= 1)
                 {
                     if (lentrainement.lesTours.Count == 0)
-                    {                
-                        foreach(ComboBox lexo in lesExercicesCbx)
-                        {
-                            // supprime les contrôles de l'interface
-                            gbxExercices.Controls.Remove(lexo);
-                            nbExercices--;
-                        }
-                        foreach(ComboBox lnbExo in lesnbExericicesCbx)
-                        {
-                            gbxExercices.Controls.Remove(lnbExo);
-                        }
+                    {
+                        SuppCbxExercice(lesExercicesCbx);
 
                     }
                     btn_AjouterExercices.Visible = false;
@@ -263,6 +254,22 @@ namespace MyBuild
                 nbExercices = 0;
             }
         }
+
+        private void SuppCbxExercice(List<ComboBox> lesExercicesCbx)
+        {
+            foreach (ComboBox lexo in lesExercicesCbx)
+            {
+                // supprime les contrôles de l'interface
+                gbxExercices.Controls.Remove(lexo);
+                nbExercices--;
+            }
+            foreach (ComboBox lnbExo in lesnbExericicesCbx)
+            {
+                gbxExercices.Controls.Remove(lnbExo);
+            }
+        }
+
+
 
         private void btn_AddTour_Click(object sender, EventArgs e)
         {
@@ -351,10 +358,24 @@ namespace MyBuild
         {
             try
             {
-                lentrainement.Id = tbx_Id.Text;
-                lentrainement.Nom = txt_NomEntrainement.Text;
-                lentrainement.NbTour = Convert.ToInt32(cbx_nbTours.SelectedItem.ToString());
-                DAL.Instance.AjouterEntrainementDB(lentrainement);
+                if (lentrainement.lesTours.Count > 0 || String.IsNullOrEmpty(txt_NomEntrainement.Text) || Convert.ToInt32(cbx_nbTours.SelectedItem.ToString()) > 0)
+                {
+                    lentrainement.Id = tbx_Id.Text;
+                    lentrainement.Nom = txt_NomEntrainement.Text;
+                    lentrainement.NbTour = Convert.ToInt32(cbx_nbTours.SelectedItem.ToString());
+                    DAL.Instance.AjouterEntrainementDB(lentrainement);
+                    tbx_Id.Text =Guid.NewGuid().ToString() ;
+                    txt_NomEntrainement.Text = "";
+                    cbx_nbTours.SelectedIndex = -1;
+                    cbx_TypeEntrainement.SelectedIndex = -1;
+                    numeroTour = 0;
+                  
+
+                    lbl_numeroTour.Text = numeroTour.ToString();
+                    SuppCbxExercice(lesExercicesCbx);
+
+                }
+                else { MessageBox.Show("Il manque des valeurs.."); }
             }
             catch (Exception ex)
             {
