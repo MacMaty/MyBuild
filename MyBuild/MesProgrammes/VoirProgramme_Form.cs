@@ -13,8 +13,9 @@ namespace MyBuild.MesProgrammes
 {
     public partial class VoirProgramme_Form : Form
     {
-        int x = 600, y = 110;
+        int x = 300, y = 50;
         List<PictureBox> lesPicturesBox = new List<PictureBox>();
+        List<Label> listLabelTour = new List<Label>();
         public VoirProgramme_Form()
         {
             InitializeComponent();
@@ -57,7 +58,12 @@ namespace MyBuild.MesProgrammes
             {
                 this.Controls.Remove(lapicture);
             }
-            x = 600; y = 110;
+            
+            foreach (var lelabel in listLabelTour)
+            {
+                this.Controls.Remove(lelabel);
+            }
+            x = 300; y = 50;
         }
 
         private void AfficherTour(Entrainement p_entrainement)
@@ -65,29 +71,37 @@ namespace MyBuild.MesProgrammes
               List<Tour> lesTours =   DAL.Instance.RecupExerciceParTour(p_entrainement.Id,p_entrainement.NbTour);
               foreach (Tour leTour in lesTours)
               {
+                  Label lelabelTour = new Label();
+                  lelabelTour.Text = "Tour : "+leTour.numeroTour.ToString();
+                  lelabelTour.Location = new Point(x , y-25);
+                  listLabelTour.Add(lelabelTour);
+                  this.Controls.Add(lelabelTour);
                   foreach (Exercice lExercice in leTour.lesExercices)
                   {
                       
                       PictureBox laPicturebox = new PictureBox();
-                      laPicturebox.Width =100;
+                      laPicturebox.Width =133;
                       laPicturebox.Height =75 ;
 
-                      
+                      Label lelabnbTour = new Label();
+                      lelabnbTour.Text = " x " + lExercice.leNbdeFois.ToString();
+                      lelabnbTour.Location = new Point(x+133, y);
+                      lelabnbTour.Width = 30;
+                      this.Controls.Add(lelabnbTour);
+                      listLabelTour.Add(lelabnbTour);
+
+
                       laPicturebox.Location = new Point(x,y);
                       Image image = Image.FromFile(lExercice.imagePath.Replace(@"\\", @"\"));
                       laPicturebox.Image = image;
                       this.Controls.Add(laPicturebox);
                       lesPicturesBox.Add(laPicturebox);
 
-                      y += 100;
-                      
-
-
+                      y += 80;
                      
-                      
                   }
-                  y = 110;
-                  x += 100;
+                  y = 50;
+                  x += 170;
               }
             
 
