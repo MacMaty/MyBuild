@@ -14,6 +14,7 @@ namespace MyBuild.BO
         public int leNbdeFois { get; set; }
         public int Recompense { get; set; }
         public string imagePath { get; set; }
+        public int sequence { get; set; }
         public Image image { get; set; }
         public TypeEntrainement LeType { get; set; }
         public Equipement lEquipement=null;

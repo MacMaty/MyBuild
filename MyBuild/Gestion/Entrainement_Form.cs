@@ -154,6 +154,7 @@ namespace MyBuild
                     lexercices.leNbdeFois = Convert.ToInt32(laComboNbtour.SelectedItem.ToString());
 
                     lentrainement.lesTours[numeroTour - 1].lesExercices.Add(lexercices);
+                    lexercices.sequence = p+1;
 
                 }
                 rtxt_log.Text += "\n Tour numero : " + lentrainement.lesTours[numeroTour - 1].numeroTour;
@@ -166,14 +167,8 @@ namespace MyBuild
                 {
                     AddTour();
                 }
-                
-            
-            
- 
-            
         }
 
-       
 
         private void btn_AddExo_Click(object sender, EventArgs e)
         {

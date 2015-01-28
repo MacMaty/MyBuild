@@ -221,8 +221,6 @@ namespace MyBuild
             {
                 foreach (var Lexercice in leTour.lesExercices)
                 {
-                    
-                    
                     cmd = new SqlCommand("dbo.AjouterTour", cnx);
                     cmd.Transaction = sqlT;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -230,6 +228,7 @@ namespace MyBuild
                     cmd.Parameters.Add("@idExercice", SqlDbType.NVarChar).Value = Lexercice.Id;
                     cmd.Parameters.Add("@numeroTour", SqlDbType.NVarChar).Value = leTour.numeroTour;
                     cmd.Parameters.Add("@nbFoisExercice", SqlDbType.Int).Value = Lexercice.leNbdeFois;
+                    cmd.Parameters.Add("@sequenceExercice", SqlDbType.Int).Value = Lexercice.sequence;
                     cmd.ExecuteNonQuery();
                     
                 }
@@ -297,6 +296,7 @@ namespace MyBuild
                l_exercice.Recompense = Convert.ToInt32(rdr["Recompense"].ToString().Trim());
                l_exercice.imagePath = rdr["imgPath"].ToString().Trim();
                l_exercice.leNbdeFois = Convert.ToInt32(rdr["nbFoisExercice"].ToString().Trim());
+               l_exercice.sequence = Convert.ToInt32(rdr["sequenceExercice"].ToString().Trim());
                list_Exercice.Add(l_exercice);
            }
            rdr.Close();
