@@ -108,6 +108,18 @@ namespace MyBuild.MesProgrammes
                
         }
 
+        private void btn_Supprimer_Click(object sender, EventArgs e)
+        {
+            if (lbx_Entrainement.SelectedIndex >= 0)
+            {
+                var id = lbx_Entrainement.SelectedValue;
+                DAL.Instance.SupprimerEntrainement(id);
+                VoirProgramme_Form vp = new VoirProgramme_Form();
+                vp.Show();
+                this.Close();
+            }
+        }
+
 
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accueil));
             this.btn_Gestion = new System.Windows.Forms.Button();
             this.btn_programme = new System.Windows.Forms.Button();
             this.btn_Entrainements = new System.Windows.Forms.Button();
@@ -98,6 +99,7 @@
             this.Controls.Add(this.btn_Entrainements);
             this.Controls.Add(this.btn_programme);
             this.Controls.Add(this.btn_Gestion);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Accueil";
             this.Text = "MyBuild";
             this.Load += new System.EventHandler(this.Accueil_Load);

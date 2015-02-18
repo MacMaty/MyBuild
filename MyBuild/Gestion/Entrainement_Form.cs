@@ -261,19 +261,13 @@ namespace MyBuild
                 {
                     if (nbExercices >= 1)
                     {
-                        if (numeroTour  == root.Nodes.Count)
+                        if (numeroTour == root.Nodes.Count && lentrainement.lesTours[numeroTour - 1].lesExercices.Count > 0)
                         {
-                        /*if(lentrainement.lesTours.Count>0)
-                        { lentrainement.lesTours.RemoveAt(nbExercices - 1); }   */
+                      
                         ComboBox lexoSup = lesExercicesCbx.First(a => a.Name == "cbExo" + nbExercices);
-                        /*ComboBox lexoSup = lesExercicesCbx.Find(delegate(ComboBox match)
-                        { return (match.Name == "cbExo" + nbExercices); });*/
-
+                      
                         ComboBox lnbSup = lesnbExericicesCbx.First(a => a.Name == "cbNbExo" + nbExercices);
-                        /*ComboBox lnbSup = lesnbExericicesCbx.Find(delegate(ComboBox match)
-                        { return (match.Name == "cbNbExo" + nbExercices); });*/
-                        //ComboBox lexoSup = lesExercicesCbx[nbExercices - 1];
-                        //ComboBox lnbSup = lesnbExericicesCbx[nbExercices - 1];
+                      
 
                         gbxExercices.Controls.Remove(lexoSup);
                         lesExercicesCbx.Remove(lexoSup);
@@ -421,7 +415,7 @@ namespace MyBuild
 
                     lbl_numeroTour.Text = numeroTour.ToString();
                     SuppCbxExercice(lesExercicesCbx);
-
+                    root.Remove();
                 }
                 else { MessageBox.Show("Il manque des valeurs.."); }
             }

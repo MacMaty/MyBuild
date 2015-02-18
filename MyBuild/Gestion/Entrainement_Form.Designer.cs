@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Entrainement_Form));
             this.btn_AjouterEntrainement = new System.Windows.Forms.Button();
             this.txt_NomEntrainement = new System.Windows.Forms.TextBox();
             this.lbl_NomEntrainement = new System.Windows.Forms.Label();
@@ -269,6 +270,7 @@
             this.Controls.Add(this.tbx_Id);
             this.Controls.Add(this.gbx_Entrainement);
             this.Controls.Add(this.btn_AjouterEntrainement);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Entrainement_Form";
             this.Text = "Entrainement";
             this.Load += new System.EventHandler(this.Entrainement_Form_Load);

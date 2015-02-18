@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Equipement_Form));
             this.txt_IdEquipement = new System.Windows.Forms.TextBox();
             this.txt_NomEquipement = new System.Windows.Forms.TextBox();
             this.btn_Valider = new System.Windows.Forms.Button();
@@ -84,6 +85,7 @@
             this.Controls.Add(this.btn_Valider);
             this.Controls.Add(this.txt_NomEquipement);
             this.Controls.Add(this.txt_IdEquipement);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Equipement_Form";
             this.Text = "Equipement";
             this.Load += new System.EventHandler(this.Equipement_Form_Load);

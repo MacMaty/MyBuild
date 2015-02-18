@@ -1,6 +1,7 @@
 ﻿using MyBuild.BO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,11 +14,15 @@ namespace MyBuild
     {
        List<Equipement> lesEquipement = new List<Equipement>();
        private static DAL instance;
-       const string cnxString = @"Data Source =TOSHIBA-MAT\BASEPCMATHIEU; Initial Catalog=MyBuild;Integrated Security=SSPI";
+       //const string cnxString = @"Data Source =TOSHIBA-MAT\BASEPCMATHIEU; Initial Catalog=MyBuild;Integrated Security=SSPI";
        //const string cnxString = @"Data Source =B2V-CZC3306VZC\SQLEXPRESS; Initial Catalog=MyBuild;Integrated Security=SSPI";
        SqlConnection cnx = null;
-       public DAL() {
-           cnx = new SqlConnection(cnxString);
+       public DAL()
+       {
+           string cnxString = ConfigurationManager.ConnectionStrings["MyBuild"].ToString();
+           if (cnxString != null)
+           { cnx = new SqlConnection(cnxString); }else{ throw new Exception("Problème de le App.config"); }
+
        }
 
        public static DAL Instance
@@ -215,8 +220,8 @@ namespace MyBuild
             cmd.Parameters.Add("@nomEntrainement", SqlDbType.NVarChar).Value = lentrainement.Nom.Trim();
             cmd.Parameters.Add("@nbTour", SqlDbType.Int).Value = lentrainement.NbTour;
             cmd.ExecuteNonQuery();
-            
 
+            
             foreach (var leTour in lentrainement.lesTours)
             {
                 foreach (var Lexercice in leTour.lesExercices)
@@ -307,6 +312,31 @@ namespace MyBuild
             }
             cnx.Close();
             return lesTours;  
+        }
+
+        internal void SupprimerEntrainement(object id)
+        {
+            try
+            {
+                cnx.Open();
+                SqlCommand cmd = new SqlCommand("dbo.DeleteEntrainement", cnx);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@idEntrainement", SqlDbType.NVarChar).Value =id.ToString().Trim();
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+                cnx.Close();
+            }
+
         }
     }
 }
