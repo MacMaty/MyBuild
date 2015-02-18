@@ -24,11 +24,8 @@ C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.pdb
 C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.csprojResolveAssemblyReference.cache
 C:\Users\m_boyer\Documents\GitHub\MyBuild\MyBuild\obj\Debug\MyBuild.MesProgrammes.VoirProgramme_Form.resources
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\bin\Debug\MyBuild.exe.config
-C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.exe
-C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.pdb
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\bin\Debug\MyBuild.exe
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\bin\Debug\MyBuild.pdb
-C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.csprojResolveAssemblyReference.cache
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.Accueil.resources
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.Entrainement_Form.resources
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.Equipement_Form.resources
@@ -36,3 +33,6 @@ C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.MesProgrammes.VoirProgramme_Form.resources
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.Properties.Resources.resources
 C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.csproj.GenerateResource.Cache
+C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.exe
+C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.pdb
+C:\Users\Mathieu\Documents\Visual Studio 2013\Projects\MyBuild\MyBuild\obj\Debug\MyBuild.csprojResolveAssemblyReference.cache

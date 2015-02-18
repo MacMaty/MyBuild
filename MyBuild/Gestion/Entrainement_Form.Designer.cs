@@ -42,13 +42,13 @@
             this.btn_AddExo = new System.Windows.Forms.Button();
             this.btn_AjouterExercices = new System.Windows.Forms.Button();
             this.gbx_Entrainement = new System.Windows.Forms.GroupBox();
+            this.btn_ValiderEntrainement = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbl_numeroTour = new System.Windows.Forms.Label();
             this.btn_RemoveTour = new System.Windows.Forms.Button();
             this.btn_AddTour = new System.Windows.Forms.Button();
             this.tbx_Id = new System.Windows.Forms.TextBox();
-            this.rtxt_log = new System.Windows.Forms.RichTextBox();
-            this.btn_ValiderEntrainement = new System.Windows.Forms.Button();
+            this.laTreeView = new System.Windows.Forms.TreeView();
             this.gbxExercices.SuspendLayout();
             this.gbx_Entrainement.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -70,7 +70,6 @@
             this.txt_NomEntrainement.Name = "txt_NomEntrainement";
             this.txt_NomEntrainement.Size = new System.Drawing.Size(134, 20);
             this.txt_NomEntrainement.TabIndex = 1;
-            this.txt_NomEntrainement.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lbl_NomEntrainement
             // 
@@ -106,7 +105,6 @@
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Récompenses";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbx_Recompense
             // 
@@ -131,7 +129,6 @@
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Type";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // gbxExercices
             // 
@@ -195,7 +192,16 @@
             this.gbx_Entrainement.TabStop = false;
             this.gbx_Entrainement.Text = "Entrainement";
             this.gbx_Entrainement.Visible = false;
-            this.gbx_Entrainement.Enter += new System.EventHandler(this.gbx_Entrainement_Enter);
+            // 
+            // btn_ValiderEntrainement
+            // 
+            this.btn_ValiderEntrainement.Location = new System.Drawing.Point(298, 528);
+            this.btn_ValiderEntrainement.Name = "btn_ValiderEntrainement";
+            this.btn_ValiderEntrainement.Size = new System.Drawing.Size(75, 23);
+            this.btn_ValiderEntrainement.TabIndex = 12;
+            this.btn_ValiderEntrainement.Text = "Valider";
+            this.btn_ValiderEntrainement.UseVisualStyleBackColor = true;
+            this.btn_ValiderEntrainement.Click += new System.EventHandler(this.btn_ValiderEntrainement_Click);
             // 
             // groupBox1
             // 
@@ -246,30 +252,20 @@
             this.tbx_Id.TabIndex = 12;
             this.tbx_Id.Visible = false;
             // 
-            // rtxt_log
+            // laTreeView
             // 
-            this.rtxt_log.Location = new System.Drawing.Point(465, 192);
-            this.rtxt_log.Name = "rtxt_log";
-            this.rtxt_log.Size = new System.Drawing.Size(353, 212);
-            this.rtxt_log.TabIndex = 13;
-            this.rtxt_log.Text = "";
-            // 
-            // btn_ValiderEntrainement
-            // 
-            this.btn_ValiderEntrainement.Location = new System.Drawing.Point(298, 528);
-            this.btn_ValiderEntrainement.Name = "btn_ValiderEntrainement";
-            this.btn_ValiderEntrainement.Size = new System.Drawing.Size(75, 23);
-            this.btn_ValiderEntrainement.TabIndex = 12;
-            this.btn_ValiderEntrainement.Text = "Valider";
-            this.btn_ValiderEntrainement.UseVisualStyleBackColor = true;
-            this.btn_ValiderEntrainement.Click += new System.EventHandler(this.btn_ValiderEntrainement_Click);
+            this.laTreeView.Location = new System.Drawing.Point(499, 114);
+            this.laTreeView.Name = "laTreeView";
+            this.laTreeView.Size = new System.Drawing.Size(272, 297);
+            this.laTreeView.TabIndex = 14;
+            this.laTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // Entrainement_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 706);
-            this.Controls.Add(this.rtxt_log);
+            this.ClientSize = new System.Drawing.Size(845, 643);
+            this.Controls.Add(this.laTreeView);
             this.Controls.Add(this.tbx_Id);
             this.Controls.Add(this.gbx_Entrainement);
             this.Controls.Add(this.btn_AjouterEntrainement);
@@ -307,7 +303,7 @@
         private System.Windows.Forms.Button btn_RemoveTour;
         private System.Windows.Forms.Button btn_AddTour;
         private System.Windows.Forms.Label lbl_numeroTour;
-        private System.Windows.Forms.RichTextBox rtxt_log;
         private System.Windows.Forms.Button btn_ValiderEntrainement;
+        private System.Windows.Forms.TreeView laTreeView;
     }
 }

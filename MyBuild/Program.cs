@@ -14,9 +14,16 @@ namespace MyBuild
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Accueil());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Accueil());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(String.Format("Un problème est survenu.\n {0}",e.Message));
+            }
         }
     }
 }

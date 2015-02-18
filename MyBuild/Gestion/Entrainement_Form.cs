@@ -19,7 +19,34 @@ namespace MyBuild
         int x = 20, y = 50;
         List<ComboBox> lesExercicesCbx = null;
         List<ComboBox> lesnbExericicesCbx = null;
+        TreeNode root = new TreeNode("Entrainement");
+       
         
+        
+        TreeNode[] lesTreeTours = new TreeNode[10]{
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+        };
+        TreeNode[] lesTreeExercice = new TreeNode[10]{
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+            new TreeNode{Text="Non Renseigné"},
+        };
         
         public Entrainement_Form()
         {
@@ -28,7 +55,8 @@ namespace MyBuild
             LoadCbxType();
             LoadCbxNbTours();
             lesExercicesCbx = new List<ComboBox>();
-            lesnbExericicesCbx = new List<ComboBox>();
+            lesnbExericicesCbx = new List<ComboBox>(); 
+           
         }
 
         private void LoadCbxExercices(int p_nbExercices)
@@ -51,6 +79,7 @@ namespace MyBuild
 
         private void LoadCbxNbFoisExercices(ComboBox cb1)
         {
+            
             for (int i = 0; i < 250; i = i + 10)
             {
                     cb1.Items.Add(i);  
@@ -70,11 +99,11 @@ namespace MyBuild
 
                 LoadCbxExercices(cb1, typeExo);
                 lesExercicesCbx.Add(cb1);
-                rtxt_log.Text += "\nAJOUTER : \n";
+               /* rtxt_log.Text += "\nAJOUTER : \n";
                 foreach(ComboBox lecb in lesExercicesCbx)
                 {
                     rtxt_log.Text += "\n"+lecb.Name.ToString();
-                }
+                }*/
                 AddCbNbFoisExo();
                 
                 nbExercices++;
@@ -142,31 +171,62 @@ namespace MyBuild
         {
             int NumCheck = numeroTour;
             NumCheck++;
+            
+            //laTreeView.Width = 250;
+            //laTreeView.Location = new Point( 500, 150);
+            
+            if (root.Nodes.Count >0)
+            {
+               // root.Remove();
+               // root.Nodes[numeroTour-1].Remove();
+               // this.Controls.Remove(laTreeView);
+               
+            }
+            
+           
+           
            
                 for (int p = 0; p < nbExercices; p++)
                 {
                     ComboBox laComboExercice = lesExercicesCbx[p];
                     ComboBox laComboNbtour = lesnbExericicesCbx[p];
+                    
                     Exercice lexercices = new Exercice();
                     lexercices.Id = laComboExercice.SelectedValue.ToString();
                     lexercices.Nom = laComboExercice.Text;
-                    lexercices.LeType = new TypeEntrainement { Id = cbx_TypeEntrainement.SelectedValue.ToString().Trim(), Nom = cbx_TypeEntrainement.Text.Trim() };
-                    lexercices.leNbdeFois = Convert.ToInt32(laComboNbtour.SelectedItem.ToString());
-
+                    lexercices.LeType = new TypeEntrainement {
+                        Id = cbx_TypeEntrainement.SelectedValue.ToString().Trim(),
+                        Nom = cbx_TypeEntrainement.Text.Trim() 
+                    };
+                   
+                    if (laComboNbtour.SelectedItem != null)
+                    {
+                        lexercices.leNbdeFois = Convert.ToInt32(laComboNbtour.SelectedItem.ToString());
+                    }
+                    else { lexercices.leNbdeFois = 0; }
                     lentrainement.lesTours[numeroTour - 1].lesExercices.Add(lexercices);
                     lexercices.sequence = p+1;
-
+                    root.Nodes[numeroTour - 1].Nodes.Add(lexercices.Nom);
+                    //lesTreeTours[numeroTour - 1].Nodes.Add(lexercices.Nom);
                 }
-                rtxt_log.Text += "\n Tour numero : " + lentrainement.lesTours[numeroTour - 1].numeroTour;
+                //root = new TreeNode("Entrainement");
+                    
+                    //root = new TreeNode("Entrainement", lesTreeTours);
+                //
+                //this.Controls.Add(laTreeView);
+
+
+               /* rtxt_log.Text += "\n Tour numero : " + lentrainement.lesTours[numeroTour - 1].numeroTour;
                 foreach (Exercice lexo in lentrainement.lesTours[numeroTour - 1].lesExercices)
                 {
                     rtxt_log.Text += "\n" + lexo.leNbdeFois.ToString() + " x " + lexo.Nom.ToString();
-                }
+                }*/
 
                 if (NumCheck <= Convert.ToInt32(cbx_nbTours.SelectedItem.ToString()))
                 {
                     AddTour();
                 }
+
         }
 
 
@@ -174,7 +234,7 @@ namespace MyBuild
         {
             if (numeroTour > 0)
             { LoadCbxExercices(nbExercices);
-            rtxt_log.Text += "\n NOMBRE cbExo : "+lesExercicesCbx.Count.ToString();
+            /*rtxt_log.Text += "\n NOMBRE cbExo : "+lesExercicesCbx.Count.ToString();*/
             }
             else { MessageBox.Show("Il faut ajouter un Tour avant un Exercice"); }
         }
@@ -201,6 +261,8 @@ namespace MyBuild
                 {
                     if (nbExercices >= 1)
                     {
+                        if (numeroTour  == root.Nodes.Count)
+                        {
                         /*if(lentrainement.lesTours.Count>0)
                         { lentrainement.lesTours.RemoveAt(nbExercices - 1); }   */
                         ComboBox lexoSup = lesExercicesCbx.First(a => a.Name == "cbExo" + nbExercices);
@@ -218,9 +280,19 @@ namespace MyBuild
 
                         gbxExercices.Controls.Remove(lnbSup);
                         lesnbExericicesCbx.Remove(lnbSup);
+
                         
+                            root.Nodes[numeroTour - 1].Nodes.RemoveAt(nbExercices - 1);
+                            lentrainement.lesTours[numeroTour - 1].lesExercices.RemoveAt(nbExercices - 1);
+                        
+                       
+                        //lesTreeTours[numeroTour-1].Nodes.RemoveAt(nbExercices-1);
+                        //lesTreeExercice[nbExercices].Remove();
+
                         y -= 20;
                         nbExercices--;
+                        }
+                        else { MessageBox.Show("Selectionné le Tour qui contient des Exercices pour en supprimer."); }
                     }
                 }
             }
@@ -268,6 +340,9 @@ namespace MyBuild
 
         private void btn_AddTour_Click(object sender, EventArgs e)
         {
+           
+
+
             AddTour();
         }
 
@@ -281,6 +356,11 @@ namespace MyBuild
                     lbl_numeroTour.Text = Convert.ToString(numeroTour);
                     cbx_TypeEntrainement.Enabled = false;
                     Tour leTour = new Tour { numeroTour = this.numeroTour };
+
+                    root.Nodes.Add(new TreeNode { Name = leTour.numeroTour.ToString(), Text = leTour.numeroTour.ToString() });
+                    // lesTreeTours[leTour.numeroTour - 1] = new TreeNode(leTour.numeroTour.ToString());
+                   
+                    
                     lentrainement.lesTours.Add(leTour);
                 }
                 else { cbx_TypeEntrainement.Enabled = true; }
@@ -294,6 +374,10 @@ namespace MyBuild
                 if (lentrainement.lesTours.Count > 0)
                 {
                     Tour tour = lentrainement.lesTours[lentrainement.lesTours.Count-1];
+
+                    root.Nodes.RemoveAt(tour.numeroTour-1);
+                    //lesTreeTours[tour.numeroTour] = new TreeNode { Text = "Non renseigné"};
+                   
                     lentrainement.lesTours.Remove(tour);
                     cbx_TypeEntrainement.Enabled = false;
                 }
@@ -311,43 +395,12 @@ namespace MyBuild
             }
             else { cbx_TypeEntrainement.Enabled = true; }
         }
-
-        
-
-
-        #region PasUtile
-        private void cbx_nbrExercices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void Entrainement_Form_Load(object sender, EventArgs e)
         {
-
+            laTreeView.Nodes.Add(root);
         }
-        
-        private void gbx_Entrainement_Enter(object sender, EventArgs e)
-        {
-
-        }
-        #endregion 
 
         private void btn_ValiderEntrainement_Click(object sender, EventArgs e)
         {
@@ -376,6 +429,11 @@ namespace MyBuild
             {
  
             }
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 }
