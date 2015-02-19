@@ -35,6 +35,7 @@
             this.btn_Valider = new System.Windows.Forms.Button();
             this.dgv_Equipement = new System.Windows.Forms.DataGridView();
             this.equipementBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Equipement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -76,11 +77,21 @@
             // 
             this.equipementBindingSource.DataSource = typeof(MyBuild.BO.Equipement);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(37, 92);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nom :";
+            // 
             // Equipement_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 621);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv_Equipement);
             this.Controls.Add(this.btn_Valider);
             this.Controls.Add(this.txt_NomEquipement);
@@ -103,5 +114,6 @@
         private System.Windows.Forms.Button btn_Valider;
         private System.Windows.Forms.DataGridView dgv_Equipement;
         private System.Windows.Forms.BindingSource equipementBindingSource;
+        private System.Windows.Forms.Label label1;
     }
 }

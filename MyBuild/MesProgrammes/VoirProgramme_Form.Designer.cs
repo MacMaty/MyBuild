@@ -62,7 +62,7 @@
             this.Controls.Add(this.lbx_Entrainement);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VoirProgramme_Form";
-            this.Text = "VoirProgramme";
+            this.Text = "Programmes";
             this.Load += new System.EventHandler(this.VoirProgramme_Load);
             this.ResumeLayout(false);
 

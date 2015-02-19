@@ -239,7 +239,6 @@
             this.laTreeView.Name = "laTreeView";
             this.laTreeView.Size = new System.Drawing.Size(272, 297);
             this.laTreeView.TabIndex = 14;
-            this.laTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // Entrainement_Form
             // 
