@@ -38,7 +38,7 @@
             // 
             // btn_Gestion
             // 
-            this.btn_Gestion.Location = new System.Drawing.Point(144, 126);
+            this.btn_Gestion.Location = new System.Drawing.Point(83, 96);
             this.btn_Gestion.Name = "btn_Gestion";
             this.btn_Gestion.Size = new System.Drawing.Size(188, 56);
             this.btn_Gestion.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // btn_programme
             // 
-            this.btn_programme.Location = new System.Drawing.Point(144, 227);
+            this.btn_programme.Location = new System.Drawing.Point(83, 197);
             this.btn_programme.Name = "btn_programme";
             this.btn_programme.Size = new System.Drawing.Size(188, 56);
             this.btn_programme.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // btn_Entrainements
             // 
-            this.btn_Entrainements.Location = new System.Drawing.Point(381, 127);
+            this.btn_Entrainements.Location = new System.Drawing.Point(320, 97);
             this.btn_Entrainements.Name = "btn_Entrainements";
             this.btn_Entrainements.Size = new System.Drawing.Size(90, 23);
             this.btn_Entrainements.TabIndex = 3;
@@ -69,7 +69,7 @@
             // 
             // btn_Exercices
             // 
-            this.btn_Exercices.Location = new System.Drawing.Point(477, 126);
+            this.btn_Exercices.Location = new System.Drawing.Point(416, 96);
             this.btn_Exercices.Name = "btn_Exercices";
             this.btn_Exercices.Size = new System.Drawing.Size(75, 23);
             this.btn_Exercices.TabIndex = 4;
@@ -80,7 +80,7 @@
             // 
             // btn_Equipements
             // 
-            this.btn_Equipements.Location = new System.Drawing.Point(558, 126);
+            this.btn_Equipements.Location = new System.Drawing.Point(497, 96);
             this.btn_Equipements.Name = "btn_Equipements";
             this.btn_Equipements.Size = new System.Drawing.Size(86, 23);
             this.btn_Equipements.TabIndex = 5;
@@ -93,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 373);
+            this.ClientSize = new System.Drawing.Size(660, 373);
             this.Controls.Add(this.btn_Equipements);
             this.Controls.Add(this.btn_Exercices);
             this.Controls.Add(this.btn_Entrainements);

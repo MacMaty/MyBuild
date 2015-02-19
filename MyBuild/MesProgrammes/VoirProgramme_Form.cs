@@ -85,8 +85,8 @@ namespace MyBuild.MesProgrammes
 
                       Label lelabnbTour = new Label();
                       lelabnbTour.Text = " x " + lExercice.leNbdeFois.ToString();
-                      lelabnbTour.Location = new Point(x+133, y);
-                      lelabnbTour.Width = 35;
+                      lelabnbTour.Location = new Point(x+135, y);
+                      lelabnbTour.Width = 36;
                       this.Controls.Add(lelabnbTour);
                       listLabelTour.Add(lelabnbTour);
 
@@ -97,11 +97,11 @@ namespace MyBuild.MesProgrammes
                       this.Controls.Add(laPicturebox);
                       lesPicturesBox.Add(laPicturebox);
 
-                      y += 80;
+                      y += 82;
                      
                   }
                   y = 50;
-                  x += 170;
+                  x += 172;
               }
             
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoirProgramme_Form));
             this.lbx_Entrainement = new System.Windows.Forms.ListBox();
             this.btn_Supprimer = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -59,6 +60,7 @@
             this.ClientSize = new System.Drawing.Size(1031, 613);
             this.Controls.Add(this.btn_Supprimer);
             this.Controls.Add(this.lbx_Entrainement);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VoirProgramme_Form";
             this.Text = "VoirProgramme";
             this.Load += new System.EventHandler(this.VoirProgramme_Load);
