@@ -34,8 +34,6 @@
             this.lbl_NomEntrainement = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbx_nbTours = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbx_Recompense = new System.Windows.Forms.TextBox();
             this.cbx_TypeEntrainement = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbxExercices = new System.Windows.Forms.GroupBox();
@@ -97,22 +95,6 @@
             this.cbx_nbTours.Name = "cbx_nbTours";
             this.cbx_nbTours.Size = new System.Drawing.Size(35, 21);
             this.cbx_nbTours.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Récompenses";
-            // 
-            // tbx_Recompense
-            // 
-            this.tbx_Recompense.Location = new System.Drawing.Point(133, 49);
-            this.tbx_Recompense.Name = "tbx_Recompense";
-            this.tbx_Recompense.Size = new System.Drawing.Size(134, 20);
-            this.tbx_Recompense.TabIndex = 7;
             // 
             // cbx_TypeEntrainement
             // 
@@ -184,8 +166,6 @@
             this.gbx_Entrainement.Controls.Add(this.label2);
             this.gbx_Entrainement.Controls.Add(this.cbx_TypeEntrainement);
             this.gbx_Entrainement.Controls.Add(this.cbx_nbTours);
-            this.gbx_Entrainement.Controls.Add(this.tbx_Recompense);
-            this.gbx_Entrainement.Controls.Add(this.label1);
             this.gbx_Entrainement.Location = new System.Drawing.Point(12, 62);
             this.gbx_Entrainement.Name = "gbx_Entrainement";
             this.gbx_Entrainement.Size = new System.Drawing.Size(416, 559);
@@ -291,8 +271,6 @@
         private System.Windows.Forms.Label lbl_NomEntrainement;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbx_nbTours;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbx_Recompense;
         private System.Windows.Forms.ComboBox cbx_TypeEntrainement;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox gbxExercices;

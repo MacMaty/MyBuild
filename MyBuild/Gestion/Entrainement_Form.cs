@@ -415,7 +415,10 @@ namespace MyBuild
 
                     lbl_numeroTour.Text = numeroTour.ToString();
                     SuppCbxExercice(lesExercicesCbx);
-                    root.Remove();
+
+                    Entrainement_Form ef = new Entrainement_Form();
+                    ef.Show();
+                    this.Close();
                 }
                 else { MessageBox.Show("Il manque des valeurs.."); }
             }
